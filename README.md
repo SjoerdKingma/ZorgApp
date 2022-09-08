@@ -1,3 +1,3 @@
-# zorgapp, initial code.
+# ZorgApp 2022
 
-Raamwerk van de zorgapp-2022
+My school project.

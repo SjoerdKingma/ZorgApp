@@ -1,7 +1,7 @@
 public class User
 {
    private String userName;
-   private int    userID;
+   private int userID;
    public String getUserName()
    {
       return userName;

@@ -18,8 +18,10 @@ public class Administration
    Administration( User user )
    {
       currentUser    = user;
-      currentPatient = new Patient( 1, "Van Puffelen", "Pierre", LocalDate.of( 2000, 2, 29 ) );
-
+      currentPatient = new Patient(
+              1, "Van Puffelen", "Pierre",
+              LocalDate.of( 2000, 2, 29 ),
+              75, 1.80f);
       System.out.format( "Current user: [%d] %s\n", user.getUserID(), user.getUserName() );
    }
    void menu()

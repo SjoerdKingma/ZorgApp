@@ -13,6 +13,9 @@ public class Patient
    private String    surname;
    private String    firstName;
    private LocalDate dateOfBirth;
+   private int weight;
+   private float length;
+
    public String getSurname()
    {
       return surname;
@@ -22,13 +25,20 @@ public class Patient
       return firstName;
    }
 
+   public int getWeight(){ return weight;}
+   public void setWeight(int weight){this.weight = weight;}
 
-   Patient( int id, String surname, String firstName, LocalDate dateOfBirth )
+   public float getLength(){return this.length;}
+   public void setLength(int length){this.length = length;}
+
+   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length)
    {
-      this.id          = id;
-      this.surname     = surname;
-      this.firstName   = firstName;
+      this.id = id;
+      this.surname = surname;
+      this.firstName = firstName;
       this.dateOfBirth = dateOfBirth;
+      this.weight = weight;
+      this.length = length;
    }
    // Display patient data.
    public void viewData()
@@ -38,6 +48,10 @@ public class Patient
       System.out.format( "%-17s %s\n", "FirstName:", firstName );
       System.out.format( "%-17s %s\n", "Age: ", age() );
       System.out.format( "%-17s %s\n", "Date of birth:", dateOfBirth );
+      System.out.format( "%-17s %s\n", "Weight: ", getWeight() );
+
+      String lengthStr = String.format(java.util.Locale.US,"%.2f", getLength()); //Shows 2 decimals for the length in meters.
+      System.out.format( "%-17s %s\n", "Length: ", lengthStr );
    }
 
    // Shorthand for a Patient's full name

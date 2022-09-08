@@ -1,7 +1,6 @@
 import java.time.LocalDate;
 import java.util.Scanner;
 
-///////////////////////////////////////////////////////////////////////////
 // class Administration represents the core of the application by showing
 // the main menu, from where all other functionality is accessible, either
 // directly or via sub-menus.
@@ -9,7 +8,6 @@ import java.util.Scanner;
 // An Adminiatration instance needs a User as input, which is passed via the
 // constructor to the data member 'çurrentUser'.
 // The patient data is available via the data member çurrentPatient.
-/////////////////////////////////////////////////////////////////
 public class Administration
 {
    private static final int STOP = 0;
@@ -17,10 +15,6 @@ public class Administration
 
    private Patient currentPatient;            // The currently selected patient
    private User    currentUser;               // the current user of the program.
-
-   /////////////////////////////////////////////////////////////////
-   // Constructor
-   /////////////////////////////////////////////////////////////////
    Administration( User user )
    {
       currentUser    = user;
@@ -28,9 +22,6 @@ public class Administration
 
       System.out.format( "Current user: [%d] %s\n", user.getUserID(), user.getUserName() );
    }
-
-   /////////////////////////////////////////////////////////////////
-   /////////////////////////////////////////////////////////////////
    void menu()
    {
       var scanner = new Scanner( System.in );  // User input via this scanner.
@@ -41,12 +32,9 @@ public class Administration
          System.out.format( "%s\n", "=".repeat( 80 ) );
          System.out.format( "Current patient: %s\n", currentPatient.fullName() );
 
-         ////////////////////////a
          // Print menu on screen
-         ////////////////////////
          System.out.format( "%d:  STOP\n", STOP );
          System.out.format( "%d:  View patient data\n", VIEW );
-         ////////////////////////
 
          System.out.print( "enter #choice: " );
          int choice = scanner.nextInt();

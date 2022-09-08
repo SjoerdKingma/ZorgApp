@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -21,6 +22,7 @@ public class Patient
       return firstName;
    }
 
+
    Patient( int id, String surname, String firstName, LocalDate dateOfBirth )
    {
       this.id          = id;
@@ -33,7 +35,8 @@ public class Patient
    {
       System.out.format( "===== Patient id=%d ==============================\n", id );
       System.out.format( "%-17s %s\n", "Surname:", surname );
-      System.out.format( "%-17s %s\n", "firstName:", firstName );
+      System.out.format( "%-17s %s\n", "FirstName:", firstName );
+      System.out.format( "%-17s %s\n", "Age: ", age() );
       System.out.format( "%-17s %s\n", "Date of birth:", dateOfBirth );
    }
 
@@ -41,5 +44,12 @@ public class Patient
    public String fullName()
    {
       return String.format( "%s %s [%s]", firstName, surname, dateOfBirth.toString() );
+   }
+
+   //Calculates the Patient's age
+   public int age()
+   {
+      Period timePeriod = Period.between(dateOfBirth, LocalDate.now());
+      return timePeriod.getYears();
    }
 }

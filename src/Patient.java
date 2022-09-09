@@ -46,12 +46,12 @@ public class Patient
       System.out.format( "===== Patient id=%d ==============================\n", id );
       System.out.format( "%-17s %s\n", "Surname:", surname );
       System.out.format( "%-17s %s\n", "FirstName:", firstName );
-      System.out.format( "%-17s %s\n", "Age: ", age() );
+      System.out.format( "%-17s %s\n", "Age: ", calcAge() );
       System.out.format( "%-17s %s\n", "Date of birth:", dateOfBirth );
       System.out.format( "%-17s %s\n", "Weight: ", getWeight() );
+      System.out.format( "%-17s %s\n", "Length: ", addTwoDecimals(length) );
 
-      String lengthStr = String.format(java.util.Locale.US,"%.2f", getLength()); //Shows 2 decimals for the length in meters.
-      System.out.format( "%-17s %s\n", "Length: ", lengthStr );
+      System.out.format( "%-17s %s\n", "BMI: ", addTwoDecimals(calcBMI()) );
    }
 
    // Shorthand for a Patient's full name
@@ -61,9 +61,19 @@ public class Patient
    }
 
    //Calculates the Patient's age
-   public int age()
+   public int calcAge()
    {
       Period timePeriod = Period.between(dateOfBirth, LocalDate.now());
       return timePeriod.getYears();
    }
+
+   public float calcBMI(){
+      return weight / (length * length);
+   }
+
+   public String addTwoDecimals(float number){
+      String result = String.format(java.util.Locale.US,"%.2f", number); //Shows 2 decimals for the length in meters. Using the US local time to avoid the result appearing in a comma instead of period symbol.
+      return result;
+   }
+
 }

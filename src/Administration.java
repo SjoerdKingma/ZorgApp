@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // class Administration represents the core of the application by showing
@@ -15,14 +16,14 @@ public class Administration
 
    private Patient currentPatient;            // The currently selected patient
    private User    currentUser;               // the current user of the program.
-   Administration( User user )
+   Administration( ArrayList<User> users )
    {
-      currentUser    = user;
+      currentUser    = users.get(0);
       currentPatient = new Patient(
               1, "Van Puffelen", "Pierre",
               LocalDate.of( 2000, 2, 29 ),
               75, 1.80f);
-      System.out.format( "Current user: [%d] %s\n", user.getUserID(), user.getUserName() );
+      System.out.format( "Current user: [%d] %s\n", currentUser.getUserID(), currentUser.getUserName() );
    }
    void menu()
    {

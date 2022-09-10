@@ -2,13 +2,13 @@ import java.io.*;
 
 public final class SettingsEditor {
 
-    private final static String SettingsPath = "CurrentUser.txt";
+    private final static String SettingsPath = "src/CurrentUser.txt";
 
     private SettingsEditor(){
 
     }
 
-    public static int GetCurrentUser(){
+    public static int GetCurrentUserId(){
 
         try{
             BufferedReader reader = new BufferedReader(new FileReader(SettingsPath));
@@ -31,7 +31,7 @@ public final class SettingsEditor {
     public static void UpdateCurrentUser(int userId) {
         try{
             BufferedWriter writer = new BufferedWriter(new FileWriter(SettingsPath));
-            writer.write(userId);
+            writer.write(String.valueOf(userId));
             writer.close();
             System.out.println("UserId succesfully changed!");
         }catch(IOException e){

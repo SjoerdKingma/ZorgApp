@@ -24,13 +24,12 @@ public class Administration
    Administration( ArrayList<User> users )
    {
       userList = users;
-      int currentUserId = SettingsEditor.GetCurrentUser();
+      int currentUserId = SettingsEditor.GetCurrentUserId();
       currentUser    = getUserFromUserId(currentUserId);
       currentPatient = new Patient(
               1, "Van Puffelen", "Pierre",
               LocalDate.of( 2000, 2, 29 ),
               75, 1.80f);
-      System.out.format( "Current user: [%d] %s\n", currentUser.getUserID(), currentUser.getUserName() );
    }
    void menu()
    {
@@ -40,6 +39,7 @@ public class Administration
       while (nextCycle)
       {
          System.out.format( "%s\n", "=".repeat( 80 ) );
+         System.out.format( "Current user: [%d] %s\n", currentUser.getUserID(), currentUser.getUserName() );
          System.out.format( "Current patient: %s\n", currentPatient.fullName() );
 
          // Print menu on screen
@@ -74,6 +74,7 @@ public class Administration
 
    void changeUser(int userId){
       SettingsEditor.UpdateCurrentUser(userId);
+      currentUser = getUserFromUserId((userId));
    }
 
    User getUserFromUserId(int userId){

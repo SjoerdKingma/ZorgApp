@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // class Administration represents the core of the application by showing
@@ -21,11 +22,20 @@ public class Administration
    private ArrayList<User> userList;
    private ArrayList<Patient> patientList;
 
+   private Scanner scanner;
+
    Administration( ArrayList<User> users )
    {
+      scanner = new Scanner( System.in );  // User input via this scanner.
+
       userList = users;
-      int currentUserId = SettingsEditor.GetCurrentUserId();
+
+      int currentUserId = SettingsHelper.GetCurrentUserId();
       currentUser    = getUserFromUserId(currentUserId);
+      if(currentUser == null){
+         menuChangeUser(); //Force the user to login
+      }
+
       currentPatient = new Patient(
               1, "Van Puffelen", "Pierre",
               LocalDate.of( 2000, 2, 29 ),
@@ -33,13 +43,11 @@ public class Administration
    }
    void menu()
    {
-      var scanner = new Scanner( System.in );  // User input via this scanner.
-
       boolean nextCycle = true;
       while (nextCycle)
       {
          System.out.format( "%s\n", "=".repeat( 80 ) );
-         System.out.format( "Current user: [%d] %s\n", currentUser.getUserID(), currentUser.getUserName() );
+         System.out.format( "Current user: [%d] %s\n", currentUser.getUserID() , currentUser.getUserName() );
          System.out.format( "Current patient: %s\n", currentPatient.fullName() );
 
          // Print menu on screen
@@ -58,12 +66,10 @@ public class Administration
             case VIEW:
                currentUser.viewPatientData( currentPatient );
                break;
-            case CHANGE_USER:{
-               System.out.println("Enter UserId: ");
-               int userId = scanner.nextInt();
-               changeUser(userId);
+
+            case CHANGE_USER:
+               menuChangeUser();
                break;
-            }
 
             default:
                System.out.println( "Please enter a *valid* digit" );
@@ -72,12 +78,39 @@ public class Administration
       }
    }
 
+   void menuChangeUser(){
+      System.out.println("Enter your user Id to log in:");
+      int userId = 0;
+      try{
+         userId = scanner.nextInt();
+      }
+      catch(Exception ex){
+         //System.out.println("Exception error! Message: " + ex);
+         System.out.println("Please enter a valid number.");
+         menuChangeUser();
+      }
+
+      changeUser(userId);
+   }
+
    void changeUser(int userId){
-      SettingsEditor.UpdateCurrentUser(userId);
-      currentUser = getUserFromUserId((userId));
+      if (getUserFromUserId(userId) != null){ //If user exists
+         SettingsHelper.UpdateCurrentUser(userId); //Save to file
+         currentUser = getUserFromUserId((userId)); //Store current user in a variable
+      }
+      else{ //If user doesn't exist
+         System.out.println("Error. No such user could be found. Please try again.");
+         menuChangeUser();
+      }
    }
 
    User getUserFromUserId(int userId){
-      return userList.stream().filter(x->x.getUserID() == userId).findFirst().get();
+      try{
+         return userList.stream().filter(x->x.getUserID() == userId).findFirst().get();
+      }
+      catch(Exception ex){
+         //Could not find the user. Returning null.
+         return null;
+      }
    }
 }

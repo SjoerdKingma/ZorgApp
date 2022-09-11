@@ -32,6 +32,8 @@ public class Patient
    public float getLength(){return this.length;}
    public void setLength(int length){this.length = length;}
 
+   public LocalDate getDateOfBirth(){return this.dateOfBirth;}
+
    Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length)
    {
       this.id = id;

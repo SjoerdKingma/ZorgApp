@@ -67,7 +67,8 @@ public class Administration
                break;
 
             case VIEW_ALL_PATIENTS:
-               viewAllpatients();
+               viewAllPatients();
+               break;
 
             case VIEW_CURRENT_PATIENT:
                currentUser.viewPatientData( currentPatient );
@@ -88,12 +89,12 @@ public class Administration
       }
    }
 
-   private void viewAllpatients() {
+   private void viewAllPatients() {
       System.out.println("List of patients.");
 
       for(int i=0; i<patientList.size(); i++){
          Patient p = patientList.get(i);
-         System.out.format("%d. %s %s", p.getPatientId(), p.getSurname(), );
+         System.out.format("%d. %s %s\n", p.getPatientId(), p.getSurname(), p.getDateOfBirth());
       }
    }
 

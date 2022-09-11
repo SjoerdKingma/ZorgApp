@@ -96,13 +96,39 @@ public class Administration
    }
 
    private void menuEditPatient() {
-      currentPatient.viewDataWithColumnHeaders();
+      currentPatient.viewEditableData();
 
-      /*int choice = scanner.nextInt();
+      System.out.println("Choose which field number you'd like to edit: ");
+      int choice = scanner.nextInt();
+      System.out.format("Enter the new value for field %d.\n", choice);
+      String input = scanner.nextLine();
+      System.out.format("You entered %s", input);
 
-      switch(choice){
-
-      }*/
+      try{
+         switch(choice){
+            default:
+               throw new Exception("Switch statement failed.");
+            case 0://Surname
+               currentPatient.setSurname(input);
+               break;
+            case 1://First name
+               currentPatient.setFirstName(input);
+               break;
+            case 2://Date of birth
+               currentPatient.setDateOfBirth(input);
+               break;
+            case 3://Length
+               int lengthInt = Integer.parseInt(input);
+               currentPatient.setLength(lengthInt);
+               break;
+            case 4://Weight
+               int weightInt = Integer.parseInt(input);
+               currentPatient.setWeight(weightInt);
+               break;
+         }
+      }catch(Exception ex){
+         System.out.println("Please enter a valid value.");
+      }
    }
 
    private void viewAllPatients() {

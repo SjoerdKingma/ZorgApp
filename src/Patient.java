@@ -21,9 +21,17 @@ public class Patient
    {
       return surname;
    }
+   public void setSurname(String value)
+   {
+      this.surname = value;
+   }
    public String getFirstName()
    {
       return firstName;
+   }
+   public void setFirstName(String value)
+   {
+      this.firstName = value;
    }
 
    public int getWeight(){ return weight;}
@@ -33,6 +41,8 @@ public class Patient
    public void setLength(int length){this.length = length;}
 
    public LocalDate getDateOfBirth(){return this.dateOfBirth;}
+
+   public void setDateOfBirth(String value){this.surname = value;}
 
    Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length)
    {
@@ -57,24 +67,20 @@ public class Patient
       System.out.format( "%-17s %s\n", "BMI: ", addTwoDecimals(calcBMI()) );
    }
 
-   public void viewDataWithColumnHeaders(){
+   public void viewEditableData(){
 
-      int columnIndex = 0;
+      int columnHeader = 0;
 
       System.out.format( "===== Patient id=%d ==============================\n", id );
-      System.out.format( "%d. %-17s %s\n",columnIndex, "Surname:", surname );
-      columnIndex++;
-      System.out.format( "%d. %-17s %s\n",columnIndex, "FirstName:", firstName );
-      columnIndex++;
-      System.out.format( "%d. %-17s %s\n",columnIndex, "Age: ", calcAge() );
-      columnIndex++;
-      System.out.format( "%d. %-17s %s\n",columnIndex, "Date of birth:", dateOfBirth );
-      columnIndex++;
-      System.out.format( "%d. %-17s %s\n",columnIndex, "Weight: ", getWeight() );
-      columnIndex++;
-      System.out.format( "%d. %-17s %s\n",columnIndex, "Length: ", addTwoDecimals(length) );
-      columnIndex++;
-      System.out.format( "%d. %-17s %s\n" "BMI: ", columnIndex, addTwoDecimals(calcBMI()) );
+      System.out.format( "%d. %-17s %s\n",columnHeader, "Surname:", surname );
+      columnHeader++;
+      System.out.format( "%d. %-17s %s\n",columnHeader, "FirstName:", firstName );
+      columnHeader++;
+      System.out.format( "%d. %-17s %s\n",columnHeader, "Date of birth:", dateOfBirth );
+      columnHeader++;
+      System.out.format( "%d. %-17s %s\n",columnHeader, "Weight: ", getWeight() );
+      columnHeader++;
+      System.out.format( "%d. %-17s %s\n",columnHeader, "Length: ", addTwoDecimals(length) );
    }
 
    // Shorthand for a Patient's full name

@@ -13,8 +13,10 @@ import java.util.Scanner;
 public class Administration
 {
    private static final int STOP = 0;
-   private static final int VIEW = 1;
-   private static final int CHANGE_USER = 2;
+   private static final int VIEW_ALL_PATIENTS = 1;
+   private static final int VIEW_CURRENT_PATIENT = 2;
+   private static final int CHANGE_PATIENT = 3;
+   private static final int CHANGE_USER = 4;
 
    private Patient currentPatient;            // The currently selected patient
    private User    currentUser;               // the current user of the program.
@@ -36,10 +38,9 @@ public class Administration
          menuChangeUser(); //Force the user to login
       }
 
-      currentPatient = new Patient(
-              1, "Van Puffelen", "Pierre",
-              LocalDate.of( 2000, 2, 29 ),
-              75, 1.80f);
+      this.patientList = GenerateData.GeneratePatients();
+      this.currentPatient = patientList.get(0);
+
    }
    void menu()
    {
@@ -48,11 +49,13 @@ public class Administration
       {
          System.out.format( "%s\n", "=".repeat( 80 ) );
          System.out.format( "Current user: [%d] %s\n", currentUser.getUserID() , currentUser.getUserName() );
-         System.out.format( "Current patient: %s\n", currentPatient.fullName() );
+         System.out.format( "Current patient: [%d] %s\n", currentPatient.getPatientId(),currentPatient.fullName() );
 
          // Print menu on screen
          System.out.format( "%d:  STOP\n", STOP );
-         System.out.format( "%d:  View patient data\n", VIEW );
+         System.out.format( "%d:  Patient overview\n", VIEW_ALL_PATIENTS );
+         System.out.format( "%d:  View patient details\n", VIEW_CURRENT_PATIENT );
+         System.out.format( "%d:  Change Patient\n", CHANGE_PATIENT );
          System.out.format( "%d:  Change User\n", CHANGE_USER );
 
          System.out.print( "enter #choice: " );
@@ -63,8 +66,15 @@ public class Administration
                nextCycle = false;
                break;
 
-            case VIEW:
+            case VIEW_ALL_PATIENTS:
+               viewAllpatients();
+
+            case VIEW_CURRENT_PATIENT:
                currentUser.viewPatientData( currentPatient );
+               break;
+
+            case CHANGE_PATIENT:
+               menuChangePatient();
                break;
 
             case CHANGE_USER:
@@ -75,6 +85,15 @@ public class Administration
                System.out.println( "Please enter a *valid* digit" );
                break;
          }
+      }
+   }
+
+   private void viewAllpatients() {
+      System.out.println("List of patients.");
+
+      for(int i=0; i<patientList.size(); i++){
+         Patient p = patientList.get(i);
+         System.out.format("%d. %s %s", p.getPatientId(), p.getSurname(), );
       }
    }
 
@@ -112,5 +131,35 @@ public class Administration
          //Could not find the user. Returning null.
          return null;
       }
+   }
+
+   void menuChangePatient(){
+      System.out.println("Enter the patient ID:");
+      int patientId = 0;
+      try{
+         patientId = scanner.nextInt();
+      }
+      catch(Exception ex){
+         //System.out.println("Exception error! Message: " + ex);
+         System.out.println("Please enter a valid number.");
+         menuChangePatient();
+      }
+
+      changePatient(patientId);
+   }
+   Patient changePatient(int patientId){
+      Patient result = null;
+      try{
+         //Get patient object by patientId
+         result =  patientList.stream().filter(x->x.getPatientId() == patientId).findFirst().get();
+
+      }
+      catch(Exception ex){
+         //Could not find the user.
+         System.out.println("Error finding user.");
+      }
+
+      currentPatient = result; //Change patent
+      return result;
    }
 }

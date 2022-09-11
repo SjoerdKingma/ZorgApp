@@ -16,6 +16,7 @@ public class Patient
    private int weight;
    private float length;
 
+   public int getPatientId(){return id;}
    public String getSurname()
    {
       return surname;

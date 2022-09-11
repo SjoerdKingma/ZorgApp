@@ -57,6 +57,26 @@ public class Patient
       System.out.format( "%-17s %s\n", "BMI: ", addTwoDecimals(calcBMI()) );
    }
 
+   public void viewDataWithColumnHeaders(){
+
+      int columnIndex = 0;
+
+      System.out.format( "===== Patient id=%d ==============================\n", id );
+      System.out.format( "%d. %-17s %s\n",columnIndex, "Surname:", surname );
+      columnIndex++;
+      System.out.format( "%d. %-17s %s\n",columnIndex, "FirstName:", firstName );
+      columnIndex++;
+      System.out.format( "%d. %-17s %s\n",columnIndex, "Age: ", calcAge() );
+      columnIndex++;
+      System.out.format( "%d. %-17s %s\n",columnIndex, "Date of birth:", dateOfBirth );
+      columnIndex++;
+      System.out.format( "%d. %-17s %s\n",columnIndex, "Weight: ", getWeight() );
+      columnIndex++;
+      System.out.format( "%d. %-17s %s\n",columnIndex, "Length: ", addTwoDecimals(length) );
+      columnIndex++;
+      System.out.format( "%d. %-17s %s\n" "BMI: ", columnIndex, addTwoDecimals(calcBMI()) );
+   }
+
    // Shorthand for a Patient's full name
    public String fullName()
    {
@@ -75,8 +95,6 @@ public class Patient
    }
 
    public String addTwoDecimals(float number){
-      String result = String.format(java.util.Locale.US,"%.2f", number); //Shows 2 decimals for the length in meters. Using the US local time to avoid the result appearing in a comma instead of period symbol.
-      return result;
+      return String.format(java.util.Locale.US,"%.2f", number); //Shows 2 decimals for the length in meters. Using the US local time to avoid the result appearing in a comma instead of period symbol.
    }
-
 }

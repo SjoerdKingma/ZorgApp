@@ -15,8 +15,9 @@ public class Administration
    private static final int STOP = 0;
    private static final int VIEW_ALL_PATIENTS = 1;
    private static final int VIEW_CURRENT_PATIENT = 2;
-   private static final int CHANGE_PATIENT = 3;
-   private static final int CHANGE_USER = 4;
+   private static final int EDIT_PATIENT = 3;
+   private static final int CHANGE_PATIENT = 4;
+   private static final int CHANGE_USER = 5;
 
    private Patient currentPatient;            // The currently selected patient
    private User    currentUser;               // the current user of the program.
@@ -55,8 +56,9 @@ public class Administration
          System.out.format( "%d:  STOP\n", STOP );
          System.out.format( "%d:  Patient overview\n", VIEW_ALL_PATIENTS );
          System.out.format( "%d:  View patient details\n", VIEW_CURRENT_PATIENT );
-         System.out.format( "%d:  Change Patient\n", CHANGE_PATIENT );
-         System.out.format( "%d:  Change User\n", CHANGE_USER );
+         System.out.format( "%d:  Edit patient\n", EDIT_PATIENT );
+         System.out.format( "%d:  Change active patient\n", CHANGE_PATIENT );
+         System.out.format( "%d:  Change user\n", CHANGE_USER );
 
          System.out.print( "enter #choice: " );
          int choice = scanner.nextInt();
@@ -74,6 +76,10 @@ public class Administration
                currentUser.viewPatientData( currentPatient );
                break;
 
+            case EDIT_PATIENT:
+               menuEditPatient();
+               break;
+
             case CHANGE_PATIENT:
                menuChangePatient();
                break;
@@ -87,6 +93,16 @@ public class Administration
                break;
          }
       }
+   }
+
+   private void menuEditPatient() {
+      currentPatient.viewDataWithColumnHeaders();
+
+      /*int choice = scanner.nextInt();
+
+      switch(choice){
+
+      }*/
    }
 
    private void viewAllPatients() {

@@ -67,6 +67,8 @@ public class Patient
       System.out.format( "%-17s %s\n", "BMI: ", addTwoDecimals(calcBMI()) );
    }
 
+   //View Patient data but only display editable fields.
+   //Adds an index to each option so the user can make a selection.
    public void viewEditableData(){
 
       int columnHeader = 0;

@@ -96,19 +96,21 @@ public class Administration
    }
 
    private void menuEditPatient() {
+
       currentPatient.viewEditableData();
 
       System.out.println("Choose which field number you'd like to edit: ");
       int choice = scanner.nextInt();
       System.out.format("Enter the new value for field %d.\n", choice);
+      scanner = new Scanner(System.in);
       String input = scanner.nextLine();
-      System.out.format("You entered %s", input);
+      System.out.format("Patient updated with new value: %s for field %d", input, choice);
 
       try{
          switch(choice){
             default:
                throw new Exception("Switch statement failed.");
-            case 0://Surname
+            case 0://Surname3
                currentPatient.setSurname(input);
                break;
             case 1://First name
@@ -117,13 +119,13 @@ public class Administration
             case 2://Date of birth
                currentPatient.setDateOfBirth(input);
                break;
-            case 3://Length
-               int lengthInt = Integer.parseInt(input);
-               currentPatient.setLength(lengthInt);
-               break;
-            case 4://Weight
+            case 3://Weight
                int weightInt = Integer.parseInt(input);
                currentPatient.setWeight(weightInt);
+               break;
+            case 4://Length
+               int lengthInt = Integer.parseInt(input);
+               currentPatient.setLength(lengthInt);
                break;
          }
       }catch(Exception ex){
@@ -195,11 +197,10 @@ public class Administration
       try{
          //Get patient object by patientId
          result =  patientList.stream().filter(x->x.getPatientId() == patientId).findFirst().get();
-
       }
       catch(Exception ex){
-         //Could not find the user.
-         System.out.println("Error finding user.");
+         //Could not find the Patient in the list.
+         System.out.format("Error finding patient with id %d", patientId);
       }
 
       currentPatient = result; //Change patent

@@ -99,35 +99,40 @@ public class Administration
 
       currentPatient.viewEditableData();
 
-      System.out.println("Choose which field number you'd like to edit: ");
+      System.out.println("Choose which field number you'd like to edit, or enter 0 to quit: ");
       int choice = scanner.nextInt();
       System.out.format("Enter the new value for field %d.\n", choice);
       scanner = new Scanner(System.in);
       String input = scanner.nextLine();
-      System.out.format("Patient updated with new value: %s for field %d", input, choice);
 
       try{
          switch(choice){
             default:
-               throw new Exception("Switch statement failed.");
-            case 0://Surname3
+               System.out.format("Could not find field number: %d.\nPlease try again.\n", choice );
+               menuEditPatient();
+               break;
+            case 0://Exit program
+            case 1://Surname3
                currentPatient.setSurname(input);
                break;
-            case 1://First name
+            case 2://First name
                currentPatient.setFirstName(input);
                break;
-            case 2://Date of birth
+            case 3://Date of birth
                currentPatient.setDateOfBirth(input);
                break;
-            case 3://Weight
+            case 4://Weight
                int weightInt = Integer.parseInt(input);
                currentPatient.setWeight(weightInt);
                break;
-            case 4://Length
+            case 5://Length
                int lengthInt = Integer.parseInt(input);
                currentPatient.setLength(lengthInt);
                break;
          }
+
+         System.out.format("Patient updated with new value: %s for field %d\n", input, choice);
+
       }catch(Exception ex){
          System.out.println("Please enter a valid value.");
       }

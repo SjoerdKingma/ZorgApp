@@ -77,7 +77,7 @@ public class Administration
                break;
 
             case EDIT_PATIENT:
-               currentPatient.menuEditPatient();
+               currentUser.menuEditPatient(currentPatient);
                break;
 
             case CHANGE_PATIENT:

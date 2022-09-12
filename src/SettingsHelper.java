@@ -2,14 +2,14 @@ import java.io.*;
 
 public final class SettingsHelper {
 
-    private final static String SettingsPath = "src/CurrentUser.txt";
+    private final static String CurrentUserPath = "src/CurrentUser.txt";
 
     private SettingsHelper(){}
 
     public static int GetCurrentUserId(){
 
         try{
-            BufferedReader reader = new BufferedReader(new FileReader(SettingsPath));
+            BufferedReader reader = new BufferedReader(new FileReader(CurrentUserPath));
             int userId = 0;
             try{
                 userId = Integer.parseInt(reader.readLine());
@@ -28,7 +28,7 @@ public final class SettingsHelper {
 
     public static void UpdateCurrentUser(int userId) {
         try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter(SettingsPath));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(CurrentUserPath));
             writer.write(String.valueOf(userId));
             writer.close();
         }catch(IOException e){

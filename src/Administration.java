@@ -64,6 +64,10 @@ public class Administration
          int choice = scanner.nextInt();
          switch (choice)
          {
+            default:
+               System.out.println( "Please enter a *valid* digit" );
+               break;
+
             case STOP: // interrupt the loop
                nextCycle = false;
                break;
@@ -86,10 +90,6 @@ public class Administration
 
             case CHANGE_USER:
                menuChangeUser();
-               break;
-
-            default:
-               System.out.println( "Please enter a *valid* digit" );
                break;
          }
       }
@@ -121,7 +121,7 @@ public class Administration
 
    void changeUser(int userId){
       if (getUserFromUserId(userId) != null){ //If user exists
-         SettingsHelper.UpdateCurrentUser(userId); //Save to file
+         SettingsHelper.UpdateCurrentUser(userId); //Save userId to file
          currentUser = getUserFromUserId((userId)); //Store current user in a variable
       }
       else{ //If user doesn't exist

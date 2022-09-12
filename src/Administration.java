@@ -1,6 +1,6 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // class Administration represents the core of the application by showing
@@ -22,7 +22,7 @@ public class Administration
    private Patient currentPatient;            // The currently selected patient
    private User    currentUser;               // the current user of the program.
 
-   private ArrayList<User> userList;
+   private final ArrayList<User> userList;
    private ArrayList<Patient> patientList;
 
    private Scanner scanner;
@@ -56,7 +56,7 @@ public class Administration
          System.out.format( "%d:  STOP\n", STOP );
          System.out.format( "%d:  Patient overview\n", VIEW_ALL_PATIENTS );
          System.out.format( "%d:  View patient details\n", VIEW_CURRENT_PATIENT );
-         System.out.format( "%d:  Edit patient\n", EDIT_PATIENT );
+         System.out.format( "%d:  Edit current patient\n", EDIT_PATIENT );
          System.out.format( "%d:  Change active patient\n", CHANGE_PATIENT );
          System.out.format( "%d:  Change user\n", CHANGE_USER );
 
@@ -102,40 +102,39 @@ public class Administration
       System.out.println("Choose which field number you'd like to edit, or enter 0 to quit: ");
       int choice = scanner.nextInt();
       System.out.format("Enter the new value for field %d.\n", choice);
-      scanner = new Scanner(System.in);
-      String input = scanner.nextLine();
-
-      try{
-         switch(choice){
-            default:
-               System.out.format("Could not find field number: %d.\nPlease try again.\n", choice );
-               menuEditPatient();
-               break;
-            case 0://Exit program
-            case 1://Surname3
-               currentPatient.setSurname(input);
-               break;
-            case 2://First name
-               currentPatient.setFirstName(input);
-               break;
-            case 3://Date of birth
-               currentPatient.setDateOfBirth(input);
-               break;
-            case 4://Weight
-               int weightInt = Integer.parseInt(input);
-               currentPatient.setWeight(weightInt);
-               break;
-            case 5://Length
-               int lengthInt = Integer.parseInt(input);
-               currentPatient.setLength(lengthInt);
-               break;
-         }
-
-         System.out.format("Patient updated with new value: %s for field %d\n", input, choice);
-
-      }catch(Exception ex){
-         System.out.println("Please enter a valid value.");
+      if(choice == 3){ //User wants to edit the Patient.dateOfBirth. So we have to tell the user which date format to use.
+         System.out.println("Use this date format: YYYY-MM-DD.");
       }
+      scanner = new Scanner(System.in); //TODO: Find out why the application breaks as soon as I remove this and enter an invalid inputValue. EG: inputValue "Somestring" instead of an integer
+      String inputValue = scanner.nextLine();
+
+      switch(choice){
+         default:
+            System.out.format("Could not find field number: %d.\nPlease try again.\n", choice );
+            menuEditPatient();
+            break;
+         case 0://Exit prompt
+            return;
+         case 1://Surname3
+            currentPatient.setSurname(inputValue);
+            break;
+         case 2://First name
+            currentPatient.setFirstName(inputValue);
+            break;
+         case 3://Date of birth
+            System.out.println("Please use this format: yyyy-mm-dd.");
+            currentPatient.setDateOfBirth(stringToLocalDate(inputValue));
+            break;
+         case 4://Weight
+            int weightInt = Integer.parseInt(inputValue);
+            currentPatient.setWeight(weightInt);
+            break;
+         case 5://Length
+            float lengthInt = Float.parseFloat(inputValue);
+            currentPatient.setLength(lengthInt);
+            break;
+      }
+         System.out.format("Patient updated with new value: %s for field %d\n", inputValue, choice);
    }
 
    private void viewAllPatients() {
@@ -210,5 +209,14 @@ public class Administration
 
       currentPatient = result; //Change patent
       return result;
+   }
+
+   LocalDate stringToLocalDate(String dateString){
+      //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy"); //original one
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
+
+      //convert String to LocalDate
+      LocalDate localDate = LocalDate.parse(dateString, formatter);
+      return localDate;
    }
 }

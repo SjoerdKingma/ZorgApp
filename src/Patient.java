@@ -38,11 +38,11 @@ public class Patient
    public void setWeight(int weight){this.weight = weight;}
 
    public float getLength(){return this.length;}
-   public void setLength(int length){this.length = length;}
+   public void setLength(float length){this.length = length;}
 
    public LocalDate getDateOfBirth(){return this.dateOfBirth;}
 
-   public void setDateOfBirth(String value){this.surname = value;}
+   public void setDateOfBirth(LocalDate dateOfBirth){this.dateOfBirth = dateOfBirth;}
 
    Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length)
    {
@@ -71,18 +71,20 @@ public class Patient
    //Adds an index to each option so the user can make a selection.
    public void viewEditableData(){
 
-      int columnHeader = 0;
+      int columnHeader = 0; //Starting at 1 instead of 0 because 0 is reserved for 0. Stop
 
       System.out.format( "===== Patient id=%d ==============================\n", id );
-      System.out.format( "%d. %-17s %s\n",columnHeader, "Surname:", surname );
+      System.out.format("%d: Stop\n", columnHeader);
       columnHeader++;
-      System.out.format( "%d. %-17s %s\n",columnHeader, "FirstName:", firstName );
+      System.out.format( "%d: %-17s %s\n",columnHeader, "Surname:", surname );
       columnHeader++;
-      System.out.format( "%d. %-17s %s\n",columnHeader, "Date of birth:", dateOfBirth );
+      System.out.format( "%d: %-17s %s\n",columnHeader, "FirstName:", firstName );
       columnHeader++;
-      System.out.format( "%d. %-17s %s\n",columnHeader, "Weight: ", getWeight() );
+      System.out.format( "%d: %-17s %s\n",columnHeader, "Date of birth:", dateOfBirth );
       columnHeader++;
-      System.out.format( "%d. %-17s %s\n",columnHeader, "Length: ", addTwoDecimals(length) );
+      System.out.format( "%d: %-17s %s\n",columnHeader, "Weight: ", getWeight() );
+      columnHeader++;
+      System.out.format( "%d: %-17s %s\n",columnHeader, "Length: ", addTwoDecimals(length) );
    }
 
    // Shorthand for a Patient's full name

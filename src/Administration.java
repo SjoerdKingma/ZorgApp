@@ -18,10 +18,8 @@ public class Administration
    private static final int EDIT_PATIENT = 3;
    private static final int CHANGE_PATIENT = 4;
    private static final int CHANGE_USER = 5;
-
    private Patient currentPatient;            // The currently selected patient
    private User    currentUser;               // the current user of the program.
-
    private final ArrayList<User> userList;
    private ArrayList<Patient> patientList;
 
@@ -30,20 +28,19 @@ public class Administration
    Administration( ArrayList<User> users )
    {
       scanner = new Scanner( System.in );  // User input via this scanner.
-
       userList = users;
 
+      //Get current user
       int currentUserId = SettingsHelper.GetCurrentUserId();
       currentUser    = getUserFromUserId(currentUserId);
-      if(currentUser == null){
+      if(currentUser == null){ //If there is no current user
          menuChangeUser(); //Force the user to login
       }
 
       this.patientList = GenerateData.GeneratePatients();
       this.currentPatient = patientList.get(0);
-
    }
-   void menu()
+   public void menu()
    {
       boolean nextCycle = true;
       while (nextCycle)
@@ -77,7 +74,7 @@ public class Administration
                break;
 
             case VIEW_CURRENT_PATIENT:
-               currentUser.viewPatientData( currentPatient );
+               currentUser.viewPatientData(currentPatient);
                break;
 
             case EDIT_PATIENT:
@@ -104,7 +101,7 @@ public class Administration
       }
    }
 
-   void menuChangeUser(){
+   private void menuChangeUser(){
       System.out.println("Enter your user Id to log in:");
       int userId = 0;
       try{
@@ -119,7 +116,7 @@ public class Administration
       changeUser(userId);
    }
 
-   void changeUser(int userId){
+   private void changeUser(int userId){
       if (getUserFromUserId(userId) != null){ //If user exists
          SettingsHelper.UpdateCurrentUser(userId); //Save userId to file
          currentUser = getUserFromUserId((userId)); //Store current user in a variable
@@ -130,7 +127,7 @@ public class Administration
       }
    }
 
-   User getUserFromUserId(int userId){
+   private User getUserFromUserId(int userId){
       try{
          return userList.stream().filter(x->x.getUserID() == userId).findFirst().get();
       }
@@ -140,7 +137,7 @@ public class Administration
       }
    }
 
-   void menuChangePatient(){
+   private void menuChangePatient(){
       System.out.println("Enter the patient ID:");
       int patientId = 0;
       try{

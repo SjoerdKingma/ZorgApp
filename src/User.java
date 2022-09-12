@@ -23,7 +23,7 @@ public class User
    }
 
    public void menuEditPatient(Patient currentPatient) {
-      //TODO: Find out why this method needs to be in this file and not in Administration.java, according to the school teacher.
+      //TODO: Find out why this method needs to be in this file and not somewhere else, according to the school teacher.
       currentPatient.viewEditableData();
 
       Scanner scanner = new Scanner(System.in);

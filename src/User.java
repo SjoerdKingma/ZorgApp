@@ -1,7 +1,6 @@
 public class User
 {
    private String userName;
-   private int deleteMe;
    private int userID;
    public String getUserName()
    {

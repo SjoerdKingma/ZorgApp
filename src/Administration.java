@@ -151,7 +151,7 @@ public class Administration
 
       changePatient(patientId);
    }
-   Patient changePatient(int patientId){
+   private Patient changePatient(int patientId){
       Patient result = null;
       try{
          //Get patient object by patientId

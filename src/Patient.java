@@ -63,9 +63,9 @@ public class Patient
       System.out.format( "%-17s %s\n", "Age: ", calcAge() );
       System.out.format( "%-17s %s\n", "Date of birth:", dateOfBirth );
       System.out.format( "%-17s %s\n", "Weight: ", getWeight() );
-      System.out.format( "%-17s %s\n", "Length: ", addTwoDecimals(length) );
+      System.out.format( "%-17s %s\n", "Length: ", ConversionHelper.addTwoDecimals(length) );
 
-      System.out.format( "%-17s %s\n", "BMI: ", addTwoDecimals(calcBMI()) );
+      System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(calcBMI()) );
    }
 
    //View Patient data but only display editable fields.
@@ -85,7 +85,7 @@ public class Patient
       columnHeader++;
       System.out.format( "%d: %-17s %s\n",columnHeader, "Weight: ", getWeight() );
       columnHeader++;
-      System.out.format( "%d: %-17s %s\n",columnHeader, "Length: ", addTwoDecimals(length) );
+      System.out.format( "%d: %-17s %s\n",columnHeader, "Length: ", ConversionHelper.addTwoDecimals(length) );
    }
 
    // Shorthand for a Patient's full name
@@ -103,9 +103,5 @@ public class Patient
 
    public float calcBMI(){
       return weight / (length * length);
-   }
-
-   public String addTwoDecimals(float number){
-      return String.format(java.util.Locale.US,"%.2f", number); //Shows 2 decimals for the length in meters. Using the US local time to avoid the result appearing in a comma instead of period symbol.
    }
 }

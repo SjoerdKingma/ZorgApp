@@ -34,7 +34,7 @@ public class User
       if(choice == 3){ //User wants to edit the Patient.dateOfBirth. So we have to tell the user which date format to use.
          System.out.println("Use this date format: YYYY-MM-DD.");
       }
-      scanner = new Scanner(System.in); //TODO: Find out why the application breaks as soon as I remove this and enter an invalid inputValue. EG: inputValue "Somestring" instead of an integer
+      scanner = new Scanner(System.in); //TODO: Find out why the application breaks as soon as I remove this line and enter an invalid inputValue. EG: inputValue "Somestring" instead of an integer
       String inputValue = scanner.nextLine();
 
       switch(choice){
@@ -59,8 +59,8 @@ public class User
             currentPatient.setWeight(weightInt);
             break;
          case 5://Length
-            float lengthInt = Float.parseFloat(inputValue);
-            currentPatient.setLength(lengthInt);
+            float lengthFloat = Float.parseFloat(inputValue);
+            currentPatient.setLength(lengthFloat);
             break;
       }
       System.out.format("Patient updated with new value: %s for field %d\n", inputValue, choice);

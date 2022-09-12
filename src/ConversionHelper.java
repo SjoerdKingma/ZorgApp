@@ -7,4 +7,7 @@ public final class ConversionHelper {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
         return LocalDate.parse(dateString, formatter);
     }
+    public static String addTwoDecimals(float number){
+        return String.format(java.util.Locale.US,"%.2f", number); //Shows 2 decimals for the length in meters. Using the US local time to avoid the result appearing in a comma instead of period symbol.
+    }
 }

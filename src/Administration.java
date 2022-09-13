@@ -20,22 +20,17 @@ public class Administration
    private static final int CHANGE_USER = 5;
    private Patient currentPatient;            // The currently selected patient
    private User    currentUser;               // the current user of the program.
-   private final ArrayList<User> userList;
    private ArrayList<Patient> patientList;
 
+   private UserManager userManager;
    private Scanner scanner;
 
    Administration( ArrayList<User> users )
    {
       scanner = new Scanner( System.in );  // User input via this scanner.
-      userList = users;
+      UserManager userManager = new UserManager(users);
 
-      //Get current user
-      int currentUserId = SettingsHelper.GetCurrentUserId();
-      currentUser    = getUserFromUserId(currentUserId);
-      if(currentUser == null){ //If there is no current user
-         menuChangeUser(); //Force the user to login
-      }
+
 
       this.patientList = GenerateData.GeneratePatients();
       this.currentPatient = patientList.get(0);
@@ -86,7 +81,7 @@ public class Administration
                break;
 
             case CHANGE_USER:
-               menuChangeUser();
+               userManager.showMenuChangeUser();
                break;
          }
       }
@@ -98,42 +93,6 @@ public class Administration
       for(int i=0; i<patientList.size(); i++){
          Patient p = patientList.get(i);
          System.out.format("%d. %s %s\n", p.getPatientId(), p.getSurname(), p.getDateOfBirth());
-      }
-   }
-
-   private void menuChangeUser(){
-      System.out.println("Enter your user Id to log in:");
-      int userId = 0;
-      try{
-         userId = scanner.nextInt();
-      }
-      catch(Exception ex){
-         //System.out.println("Exception error! Message: " + ex);
-         System.out.println("Please enter a valid number.");
-         menuChangeUser();
-      }
-
-      changeUser(userId);
-   }
-
-   private void changeUser(int userId){
-      if (getUserFromUserId(userId) != null){ //If user exists
-         SettingsHelper.UpdateCurrentUser(userId); //Save userId to file
-         currentUser = getUserFromUserId((userId)); //Store current user in a variable
-      }
-      else{ //If user doesn't exist
-         System.out.println("Error. No such user could be found. Please try again.");
-         menuChangeUser();
-      }
-   }
-
-   private User getUserFromUserId(int userId){
-      try{
-         return userList.stream().filter(x->x.getUserID() == userId).findFirst().get();
-      }
-      catch(Exception ex){
-         //Could not find the user. Returning null.
-         return null;
       }
    }
 
@@ -153,9 +112,22 @@ public class Administration
    }
    Patient changePatient(int patientId){
       Patient result = null;
+
+      /* for loop vs stream
+         If raw performance is your No 1 priority, then maybe you are better off with loops.
+
+         But most people don’t want raw performance as their top priority.
+         Remember that loops use an imperative style and Streams a declarative style, so Streams are likely to be much easier to maintain.*/
+
+      //Get patient object by patientId Stream
+      //result =  patientList.stream().filter(x->x.getPatientId() == patientId).findFirst().get();
       try{
-         //Get patient object by patientId
-         result =  patientList.stream().filter(x->x.getPatientId() == patientId).findFirst().get();
+         //Get patient object by patientId For-loop
+         for(int i=0;i<patientList.size(); i++){
+            if(patientList.get(i).getPatientId() == patientId){
+               result = patientList.get(i);
+            }
+         }
       }
       catch(Exception ex){
          //Could not find the Patient in the list.

@@ -53,7 +53,7 @@ public class UserManager {
         }
     }
 
-    public User getUserFromUserId(int userId){
+    private User getUserFromUserId(int userId){
         try{
             return this.users.stream().filter(x->x.getUserID() == userId).findFirst().get();
         }

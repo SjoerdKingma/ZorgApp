@@ -19,14 +19,14 @@ public class Administration
    private static final int CHANGE_PATIENT = 4;
    private static final int CHANGE_USER = 5;       // The currently selected patient
 
+   private static final String ErrorNoInteger = "Please enter a valid number";
+
    private UserManager userManager;
    private PatientManager patientManager;
-   private Scanner scanner;
 
    Administration( ArrayList<User> users )
    {
       //Scanner scanner = new Scanner(System.in);
-      scanner = new Scanner( System.in );  // User input via this scanner.
       userManager = new UserManager(users);
       patientManager = new PatientManager(GenerateData.GeneratePatients());
 
@@ -51,11 +51,18 @@ public class Administration
          System.out.format( "%d:  Change user\n", CHANGE_USER );
 
          System.out.print( "enter #choice: " );
-         int choice = scanner.nextInt();
+         BScanner scanner = new BScanner();
+         int choice = 0;
+         try{
+            choice = scanner.nextInt();
+         }catch(Exception ex){
+            System.out.println(ErrorNoInteger);
+         }
+
          switch (choice)
          {
             default:
-               System.out.println( "Please enter a *valid* digit" );
+               System.out.println( "Please enter a *valid* number." );
                break;
 
             case STOP: // interrupt the loop

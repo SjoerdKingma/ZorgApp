@@ -51,7 +51,7 @@ public class Administration
          System.out.format( "%d:  Change user\n", CHANGE_USER );
 
          System.out.print( "enter #choice: " );
-         BScanner scanner = new BScanner();
+         Scanner scanner = new Scanner(System.in);
          int choice = 0;
          try{
             choice = scanner.nextInt();

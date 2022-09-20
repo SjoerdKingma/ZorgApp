@@ -12,15 +12,13 @@ import java.util.Scanner;
 // The patient data is available via the data member çurrentPatient.
 public class Administration
 {
+   private static final int ERROR = -1;
    private static final int STOP = 0;
    private static final int VIEW_ALL_PATIENTS = 1;
    private static final int VIEW_CURRENT_PATIENT = 2;
    private static final int EDIT_PATIENT = 3;
    private static final int CHANGE_PATIENT = 4;
    private static final int CHANGE_USER = 5;       // The currently selected patient
-
-   private static final String ErrorNoInteger = "Please enter a valid number";
-
    private UserManager userManager;
    private PatientManager patientManager;
 
@@ -64,6 +62,9 @@ public class Administration
             default:
                System.out.println( "Please enter a *valid* number." );
                break;
+
+            case ERROR:
+               System.out.println( "Please enter a *valid* number." );
 
             case STOP: // interrupt the loop
                nextCycle = false;

@@ -20,6 +20,9 @@ public class UserManager {
 
         //Get current user
         int currentUserId = SettingsHelper.GetCurrentUserId();
+        if(currentUserId == -1){ //UserId could not be found
+            showMenuChangeUser(); //Force the user to login
+        }
         currentUser = getUserFromUserId(currentUserId);
         if(currentUser == null){ //If there is no current user
             showMenuChangeUser(); //Force the user to login

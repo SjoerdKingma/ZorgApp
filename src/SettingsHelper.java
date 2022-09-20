@@ -10,7 +10,7 @@ public final class SettingsHelper {
 
         try{
             BufferedReader reader = new BufferedReader(new FileReader(CurrentUserPath));
-            int userId = 0;
+            int userId = -1;
             try{
                 userId = Integer.parseInt(reader.readLine());
             }

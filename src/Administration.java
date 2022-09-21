@@ -17,37 +17,30 @@ public class Administration
    private static final int VIEW_CURRENT_PATIENT = 2;
    private static final int EDIT_PATIENT = 3;
    private static final int CHANGE_PATIENT = 4;
-   private static final int CHANGE_USER = 5;
-   private Patient currentPatient;            // The currently selected patient
-   private User    currentUser;               // the current user of the program.
-   private final ArrayList<User> userList;
-   private ArrayList<Patient> patientList;
+   private static final int CHANGE_USER = 5;       // The currently selected patient
 
-   private Scanner scanner;
+   private static final String ErrorNoInteger = "Please enter a valid number";
+
+   private UserManager userManager;
+   private PatientManager patientManager;
 
    Administration( ArrayList<User> users )
    {
-      scanner = new Scanner( System.in );  // User input via this scanner.
-      userList = users;
+      //Scanner scanner = new Scanner(System.in);
+      userManager = new UserManager(users);
+      patientManager = new PatientManager(GenerateData.GeneratePatients());
 
-      //Get current user
-      int currentUserId = SettingsHelper.GetCurrentUserId();
-      currentUser    = getUserFromUserId(currentUserId);
-      if(currentUser == null){ //If there is no current user
-         menuChangeUser(); //Force the user to login
-      }
-
-      this.patientList = GenerateData.GeneratePatients();
-      this.currentPatient = patientList.get(0);
    }
    public void menu()
    {
       boolean nextCycle = true;
       while (nextCycle)
       {
+         User currentUser = userManager.getCurrentUser();
+
          System.out.format( "%s\n", "=".repeat( 80 ) );
          System.out.format( "Current user: [%d] %s\n", currentUser.getUserID() , currentUser.getUserName() );
-         System.out.format( "Current patient: [%d] %s\n", currentPatient.getPatientId(),currentPatient.fullName() );
+         System.out.format( "Current patient: [%d] %s\n", patientManager.currentPatient.getPatientId(), patientManager.currentPatient.fullName() );
 
          // Print menu on screen
          System.out.format( "%d:  STOP\n", STOP );
@@ -58,11 +51,18 @@ public class Administration
          System.out.format( "%d:  Change user\n", CHANGE_USER );
 
          System.out.print( "enter #choice: " );
-         int choice = scanner.nextInt();
+         Scanner scanner = new Scanner(System.in);
+         int choice = 0;
+         try{
+            choice = scanner.nextInt();
+         }catch(Exception ex){
+            System.out.println(ErrorNoInteger);
+         }
+
          switch (choice)
          {
             default:
-               System.out.println( "Please enter a *valid* digit" );
+               System.out.println( "Please enter a *valid* number." );
                break;
 
             case STOP: // interrupt the loop
@@ -70,27 +70,28 @@ public class Administration
                break;
 
             case VIEW_ALL_PATIENTS:
-               viewAllPatients();
+               patientManager.viewAllPatients();
                break;
 
             case VIEW_CURRENT_PATIENT:
-               currentUser.viewPatientData(currentPatient);
+               currentUser.viewPatientData(patientManager.currentPatient);
                break;
 
             case EDIT_PATIENT:
-               currentUser.menuEditPatient(currentPatient);
+               currentUser.menuEditPatient(patientManager.currentPatient);
                break;
 
             case CHANGE_PATIENT:
-               menuChangePatient();
+               patientManager.menuChangePatient();
                break;
 
             case CHANGE_USER:
-               menuChangeUser();
+               userManager.showMenuChangeUser();
                break;
          }
       }
    }
+<<<<<<< HEAD
 
    private void viewAllPatients() {
       System.out.println("List of patients.");
@@ -165,4 +166,6 @@ public class Administration
       currentPatient = result; //Change patent
       return result;
    }
+=======
+>>>>>>> 098552317e2cd9dd418fc36df3c47c1a0b066cac
 }

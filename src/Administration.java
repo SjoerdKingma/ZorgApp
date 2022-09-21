@@ -19,14 +19,14 @@ public class Administration
    private static final int CHANGE_PATIENT = 4;
    private static final int CHANGE_USER = 5;       // The currently selected patient
 
-   private static final String ErrorNoInteger = "Please enter a valid number";
-
    private UserManager userManager;
    private PatientManager patientManager;
+   private Scanner scanner;
 
    Administration( ArrayList<User> users )
    {
       //Scanner scanner = new Scanner(System.in);
+      scanner = new Scanner( System.in );  // User input via this scanner.
       userManager = new UserManager(users);
       patientManager = new PatientManager(GenerateData.GeneratePatients());
 
@@ -51,18 +51,11 @@ public class Administration
          System.out.format( "%d:  Change user\n", CHANGE_USER );
 
          System.out.print( "enter #choice: " );
-         Scanner scanner = new Scanner(System.in);
-         int choice = 0;
-         try{
-            choice = scanner.nextInt();
-         }catch(Exception ex){
-            System.out.println(ErrorNoInteger);
-         }
-
+         int choice = scanner.nextInt();
          switch (choice)
          {
             default:
-               System.out.println( "Please enter a *valid* number." );
+               System.out.println( "Please enter a *valid* digit" );
                break;
 
             case STOP: // interrupt the loop
@@ -91,81 +84,4 @@ public class Administration
          }
       }
    }
-<<<<<<< HEAD
-
-   private void viewAllPatients() {
-      System.out.println("List of patients.");
-
-      for(int i=0; i<patientList.size(); i++){
-         Patient p = patientList.get(i);
-         System.out.format("%d. %s %s\n", p.getPatientId(), p.getSurname(), p.getDateOfBirth());
-      }
-   }
-
-   private void menuChangeUser(){
-      System.out.println("Enter your user Id to log in:");
-      int userId = 0;
-      try{
-         userId = scanner.nextInt();
-      }
-      catch(Exception ex){
-         //System.out.println("Exception error! Message: " + ex);
-         System.out.println("Please enter a valid number.");
-         menuChangeUser();
-      }
-
-      changeUser(userId);
-   }
-
-   private void changeUser(int userId){
-      if (getUserFromUserId(userId) != null){ //If user exists
-         SettingsHelper.UpdateCurrentUser(userId); //Save userId to file
-         currentUser = getUserFromUserId((userId)); //Store current user in a variable
-      }
-      else{ //If user doesn't exist
-         System.out.println("Error. No such user could be found. Please try again.");
-         menuChangeUser();
-      }
-   }
-
-   private User getUserFromUserId(int userId){
-      try{
-         return userList.stream().filter(x->x.getUserID() == userId).findFirst().get();
-      }
-      catch(Exception ex){
-         //Could not find the user. Returning null.
-         return null;
-      }
-   }
-
-   private void menuChangePatient(){
-      System.out.println("Enter the patient ID:");
-      int patientId = 0;
-      try{
-         patientId = scanner.nextInt();
-      }
-      catch(Exception ex){
-         //System.out.println("Exception error! Message: " + ex);
-         System.out.println("Please enter a valid number.");
-         menuChangePatient();
-      }
-
-      changePatient(patientId);
-   }
-   private Patient changePatient(int patientId){
-      Patient result = null;
-      try{
-         //Get patient object by patientId
-         result =  patientList.stream().filter(x->x.getPatientId() == patientId).findFirst().get();
-      }
-      catch(Exception ex){
-         //Could not find the Patient in the list.
-         System.out.format("Error finding patient with id %d", patientId);
-      }
-
-      currentPatient = result; //Change patent
-      return result;
-   }
-=======
->>>>>>> 098552317e2cd9dd418fc36df3c47c1a0b066cac
 }

@@ -21,15 +21,11 @@ public class Administration
    private static final int CHANGE_USER = 5;       // The currently selected patient
    private UserManager userManager;
    private PatientManager patientManager;
-   private Scanner scanner;
 
    Administration( ArrayList<User> users )
    {
-      //Scanner scanner = new Scanner(System.in);
-      scanner = new Scanner( System.in );  // User input via this scanner.
       userManager = new UserManager(users);
       patientManager = new PatientManager(GenerateData.GeneratePatients());
-
    }
    public void menu()
    {
@@ -51,7 +47,21 @@ public class Administration
          System.out.format( "%d:  Change user\n", CHANGE_USER );
 
          System.out.print( "enter #choice: " );
-         int choice = scanner.nextInt();
+         Scanner scanner = new Scanner(System.in);
+         int choice = 0;
+         try{
+            choice = scanner.nextInt();
+         }catch(Exception ex){
+            System.out.println("You entered text where a number was expected. Please enter a valid number for your choice.");
+            System.out.println("Press ENTER key to continue.");
+            try{
+               System.in.read();
+            }
+            catch(Exception exc){}
+
+            menu(); //Restart menu
+         }
+
          switch (choice)
          {
             default:
@@ -66,6 +76,7 @@ public class Administration
                break;
 
             case VIEW_ALL_PATIENTS:
+               System.out.println("");
                patientManager.viewAllPatients();
                break;
 

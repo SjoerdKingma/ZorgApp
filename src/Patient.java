@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 
 public class Patient
 {
@@ -14,6 +15,7 @@ public class Patient
    private LocalDate dateOfBirth;
    private int weight;
    private float length;
+   private ArrayList<Prescription> prescriptions;
 
    public int getPatientId(){return id;}
    public String getSurname()
@@ -43,7 +45,7 @@ public class Patient
 
    public void setDateOfBirth(LocalDate dateOfBirth){this.dateOfBirth = dateOfBirth;}
 
-   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length)
+   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions)
    {
       this.id = id;
       this.surname = surname;
@@ -51,6 +53,7 @@ public class Patient
       this.dateOfBirth = dateOfBirth;
       this.weight = weight;
       this.length = length;
+      this.prescriptions = prescriptions;
    }
    // Display patient data.
    public void viewData()
@@ -62,8 +65,15 @@ public class Patient
       System.out.format( "%-17s %s\n", "Date of birth:", dateOfBirth );
       System.out.format( "%-17s %s\n", "Weight: ", getWeight() );
       System.out.format( "%-17s %s\n", "Length: ", ConversionHelper.addTwoDecimals(length) );
-
       System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(calcBMI()) );
+
+      System.out.format("\nPatiënt medicijnen:\n\n");
+      for(int i=0; i<prescriptions.size(); i++){
+         Prescription prescription = prescriptions.get(i);
+         System.out.format( "%-17s %s\n", "Medicijn naam: ", prescription.medicine.name);
+         System.out.format( "%-17s %s\n", "Medicijn type: ", prescription.medicine.type.toString());
+         System.out.format( "%-17s %s\n\n", "Dosering: ", prescription.dose);
+      }
    }
 
    //View Patient data but only display editable fields.

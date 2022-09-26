@@ -1,5 +1,11 @@
 import java.util.Scanner;
 
+enum Role{
+   Fysio,
+   Tandarts,
+   Huisarts
+}
+
 public class User
 {
    private String userName;
@@ -12,11 +18,14 @@ public class User
    {
       return userID;
    }
-   public User( int id, String name )
+   public User( int id, String name, Role role)
    {
       this.userID   = id;
       this.userName = name;
+      this.role = role;
    }
+
+   public Role role;
    public void viewPatientData( Patient patient )
    {
       patient.viewData();
@@ -66,3 +75,4 @@ public class User
       System.out.format("Patient updated with new value: %s for field %d\n", inputValue, choice);
    }
 }
+

@@ -1,15 +1,14 @@
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public final class GenerateData {
-    private GenerateData(){};
+    private GenerateData(){}
 
     public static ArrayList<User> GenerateUsers(){
         ArrayList<User> result = new ArrayList<>();
-        result.add(new User( 1, "Mart ElCamera" ));
-        result.add(new User( 2, "Roger Federer" ));
-
+        result.add(new User( 1, "Mart ElCamera", Role.Huisarts));
+        result.add(new User( 2, "Roger Federer", Role.Fysio ));
+        result.add(new User( 3, "Rafael Nadal", Role.Huisarts));
         return result;
     }
 

@@ -18,6 +18,12 @@ public class User
    {
       return userID;
    }
+
+   private Role role;
+   public Role getRole(){
+      return this.role;
+   }
+
    public User( int id, String name, Role role)
    {
       this.userID   = id;
@@ -25,7 +31,6 @@ public class User
       this.role = role;
    }
 
-   public Role role;
    public void viewPatientData( Patient patient )
    {
       patient.viewData();

@@ -1,11 +1,4 @@
 import java.util.Scanner;
-
-enum Role{
-   Fysio,
-   Tandarts,
-   Huisarts
-}
-
 public class User
 {
    private String userName;
@@ -19,16 +12,10 @@ public class User
       return userID;
    }
 
-   private Role role;
-   public Role getRole(){
-      return this.role;
-   }
-
-   public User( int id, String name, Role role)
+   public User( int id, String name)
    {
       this.userID   = id;
       this.userName = name;
-      this.role = role;
    }
 
    public void viewPatientData( Patient patient )

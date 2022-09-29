@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ public final class GenerateData {
         return result;
     }
 
-    public static ArrayList<Patient> GeneratePatients(){
+    private static ArrayList<Patient> GeneratePatients(){
         ArrayList<Patient> result = new ArrayList<>();
 
         ArrayList<Prescription> prescriptions = GeneratePrescriptions();
@@ -76,6 +77,17 @@ public final class GenerateData {
         result.add(new Medicine(2, "Amoxil", MedicineType.Pijstiller));
         result.add(new Medicine(3, "Cipro", MedicineType.Antibiotica));
         result.add(new Medicine(4, "Zithromax", MedicineType.Antibiotica));
+        return result;
+    }
+
+    public static ArrayList<Department> GenerateDepartments(){
+
+        ArrayList<Patient> patients = GeneratePatients();
+
+        ArrayList<Department> result = new ArrayList<>();
+        Department huisarts = new Department(0, "Huisarts");
+        Department tandarts = new Department(0, "Tandarts");
+        Department fysio = new Department(0, "Fysio");
         return result;
     }
 }

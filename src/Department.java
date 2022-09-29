@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 public class Department {
     private int id;
     private String name;
 
-    private Arraylist<Patient> patients;
+    private ArrayList<Patient> patients;
 
     public int getId(){
         return this.id;

@@ -82,12 +82,25 @@ public final class GenerateData {
 
     public static ArrayList<Department> GenerateDepartments(){
 
+        ArrayList<Department> result = new ArrayList<>();
+
         ArrayList<Patient> patients = GeneratePatients();
 
-        ArrayList<Department> result = new ArrayList<>();
-        Department huisarts = new Department(0, "Huisarts");
-        Department tandarts = new Department(0, "Tandarts");
-        Department fysio = new Department(0, "Fysio");
+        ArrayList<Patient> huisartsPatients = new ArrayList<>();
+        huisartsPatients.add(patients.get(0));
+        huisartsPatients.add(patients.get(1));
+
+        ArrayList<Patient> tandartsPatients = new ArrayList<>();
+        tandartsPatients.add(patients.get(2));
+        tandartsPatients.add(patients.get(3));
+
+        ArrayList<Patient> fysioPatients = new ArrayList<>();
+        fysioPatients.add(patients.get(0));
+        fysioPatients.add(patients.get(4));
+
+        result.add(new Department(0, "Huisarts", huisartsPatients));
+        result.add(new Department(0, "Tandarts", tandartsPatients));
+        result.add(new Department(0, "Fysio", fysioPatients));
         return result;
     }
 }

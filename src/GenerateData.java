@@ -6,9 +6,9 @@ public final class GenerateData {
 
     public static ArrayList<User> GenerateUsers(){
         ArrayList<User> result = new ArrayList<>();
-        result.add(new User( 1, "Mart ElCamera"));
-        result.add(new User( 2, "Roger Federer"));
-        result.add(new User( 3, "Rafael Nadal"));
+        result.add(new Fysio( 1, "Mart ElCamera"));
+        result.add(new Huisarts( 2, "Roger Federer"));
+        result.add(new Tandarts( 3, "Rafael Nadal"));
         return result;
     }
 

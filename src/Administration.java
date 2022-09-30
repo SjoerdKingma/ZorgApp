@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -19,13 +20,24 @@ public class Administration
    private static final int EDIT_PATIENT = 3;
    private static final int CHANGE_PATIENT = 4;
    private static final int CHANGE_USER = 5;       // The currently selected patient
+   private ArrayList<Department> departments; //Contains patients
    private UserManager userManager;
    private PatientManager patientManager;
 
-   Administration( ArrayList<User> users )
+   private DepartmentManager departmentManager;
+
+   Administration(ArrayList<User> users, ArrayList<Department> departments)
    {
       userManager = new UserManager(users);
-      patientManager = new PatientManager(GenerateData.GeneratePatients());
+      DepartmentName departmentName = userManager.getCurrentUser().getDepartmentName();
+      ArrayList<Patient> patients = departments.stream().filter(x -> x.getName() == departmentName).findFirst().get().patients;
+      patientManager = new PatientManager(patients);
+   }
+
+   private ArrayList<Patient> getPatients(){
+      departments
+
+      return result;
    }
    public void menu()
    {

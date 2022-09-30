@@ -3,6 +3,8 @@ public class User
 {
    private String userName;
    private int userID;
+
+   private DepartmentName departmentName;
    public String getUserName()
    {
       return userName;
@@ -12,10 +14,15 @@ public class User
       return userID;
    }
 
-   public User( int id, String name)
+   public DepartmentName getDepartmentName() {
+      return this.departmentName;
+   }
+
+   public User( int id, String name, DepartmentName departmentName)
    {
       this.userID   = id;
       this.userName = name;
+      this.departmentName = departmentName;
    }
 
    public void viewPatientData( Patient patient )

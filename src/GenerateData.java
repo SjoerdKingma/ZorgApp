@@ -98,9 +98,9 @@ public final class GenerateData {
         fysioPatients.add(patients.get(0));
         fysioPatients.add(patients.get(4));
 
-        result.add(new Department(0, "Huisarts", huisartsPatients));
-        result.add(new Department(0, "Tandarts", tandartsPatients));
-        result.add(new Department(0, "Fysio", fysioPatients));
+        result.add(new Department(0, DepartmentName.Huisarts, huisartsPatients));
+        result.add(new Department(0, DepartmentName.Tandarts, tandartsPatients));
+        result.add(new Department(0, DepartmentName.Fysio, fysioPatients));
         return result;
     }
 }

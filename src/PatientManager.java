@@ -28,30 +28,32 @@ public class PatientManager {
             patientId = scanner.nextInt();
         }
         catch(Exception ex){
-            //System.out.println("Exception error! Message: " + ex);
             System.out.println("Please enter a valid number.");
             menuChangePatient(); //Show the menu again
         }
 
-        changePatient(patientId);
-    }
-    Patient changePatient(int patientId){
-        Patient result = null;
-
         try{
-            //Get patient object by patientId For-loop
-            for(int i=0;i<patients.size(); i++){
-                if(patients.get(i).getPatientId() == patientId){
-                    result = patients.get(i);
-                }
-            }
+            changePatient(patientId);
         }
         catch(Exception ex){
-            //Could not find the Patient in the list.
-            System.out.format("Error finding patient with id %d", patientId);
+            System.out.println(ex.getMessage());
+        }
+    }
+    Patient changePatient(int patientId) throws Exception
+    {
+        Patient result = null;
+
+        //Get patient object by patientId For-loop
+        for(int i=0;i<patients.size(); i++){
+            if(patients.get(i).getPatientId() == patientId){
+                result = patients.get(i);
+            }
+        }
+        if(result == null){
+            throw new Exception("Error! Could not find the Patient. Please check if the provided Patient ID is correct.");
         }
 
-        currentPatient = result; //Change patent
+        currentPatient = result; //Update current patent
         return result;
     }
 

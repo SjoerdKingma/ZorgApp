@@ -38,7 +38,7 @@ public class Administration
          User currentUser = userManager.getCurrentUser();
 
          System.out.format( "\n%s\n\n", "=".repeat( 80 ) );
-         System.out.format( "Current user: [%d] %s\n", currentUser.getUserID() , currentUser.getUserName());
+         System.out.format( "Current user: [%d] %s [%s]\n", currentUser.getUserID() , currentUser.getUserName(),currentUser.getDepartmentName().toString());
          System.out.format( "Current patient: [%d] %s\n", patientManager.currentPatient.getPatientId(), patientManager.currentPatient.fullName() );
 
          // Print menu on screen

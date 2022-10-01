@@ -49,8 +49,7 @@ public class Administration
 
          System.out.print( "enter #choice: " );
 
-         boolean nextCycleNeeded = handleInput(); //Handle Input via this method
-         nextCycle = nextCycleNeeded;
+         nextCycle = handleInput(); //Handle Input via this method
       }
    }
 

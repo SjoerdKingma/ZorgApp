@@ -1,6 +1,3 @@
-import java.lang.reflect.Array;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,25 +16,19 @@ public class Administration
    private static final int VIEW_CURRENT_PATIENT = 2;
    private static final int EDIT_PATIENT = 3;
    private static final int CHANGE_PATIENT = 4;
-   private static final int CHANGE_USER = 5;       // The currently selected patient
-   private ArrayList<Department> departments; //Contains patients
-   private UserManager userManager;
+   private static final int CHANGE_USER = 5;
+
+   private final ArrayList<Department> departments; //Contains patients
+   private final UserManager userManager;
    private PatientManager patientManager;
 
    private DepartmentManager departmentManager;
 
-   Administration(ArrayList<User> users, ArrayList<Department> departments)
+   Administration(ArrayList<User> users)
    {
       userManager = new UserManager(users);
-      DepartmentName departmentName = userManager.getCurrentUser().getDepartmentName();
-      ArrayList<Patient> patients = departments.stream().filter(x -> x.getName() == departmentName).findFirst().get().patients;
-      patientManager = new PatientManager(patients);
-   }
-
-   private ArrayList<Patient> getPatients(){
-      departments
-
-      return result;
+      this.departments = GenerateData.GenerateDepartmentsAndPatients();
+      updateDepartmentAndPatients();
    }
    public void menu()
    {
@@ -61,9 +52,7 @@ public class Administration
          System.out.print( "enter #choice: " );
 
          boolean nextCycleNeeded = handleInput(); //Handle Input via this method
-         if(nextCycle != nextCycleNeeded){
-            nextCycle = nextCycleNeeded;
-         }
+         nextCycle = nextCycleNeeded;
       }
    }
 
@@ -105,7 +94,8 @@ public class Administration
             break;
 
          case CHANGE_USER:
-            userManager.showMenuChangeUser();
+            userManager.menuChangeUser();
+            updateDepartmentAndPatients(); //After changing the user, the departments with patients list needs to be updated.
             break;
       }
       return hasNextCycle;
@@ -114,7 +104,7 @@ public class Administration
    private int validateInput() {
       //Validate User Input
       Scanner scanner = new Scanner(System.in);
-      int choice = STOP;
+      int choice = 0;
 
       try{
          choice = scanner.nextInt();
@@ -130,5 +120,11 @@ public class Administration
       }
 
       return choice;
+   }
+   
+   private void updateDepartmentAndPatients(){
+      DepartmentName departmentName = userManager.getCurrentUser().getDepartmentName();
+      ArrayList<Patient> patients = departments.stream().filter(x -> x.getName() == departmentName).findFirst().get().patients;
+      this.patientManager = new PatientManager(patients);
    }
 }

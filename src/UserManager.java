@@ -21,15 +21,15 @@ public class UserManager {
         //Get current user
         int currentUserId = SettingsHelper.GetCurrentUserId();
         if(currentUserId == -1){ //UserId could not be found
-            showMenuChangeUser(); //Force the user to login
+            menuChangeUser(); //Force the user to login
         }
         currentUser = getUserFromUserId(currentUserId);
         if(currentUser == null){ //If there is no current user
-            showMenuChangeUser(); //Force the user to login
+            menuChangeUser(); //Force the user to login
         }
     }
 
-    public void showMenuChangeUser(){
+    public void menuChangeUser(){
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter your user Id to log in:");
@@ -40,7 +40,7 @@ public class UserManager {
         catch(Exception ex){
             //System.out.println("Exception error! Message: " + ex);
             System.out.println("Please enter a valid number.");
-            showMenuChangeUser();
+            menuChangeUser();
         }
 
         changeUser(userId);
@@ -52,7 +52,7 @@ public class UserManager {
         }
         else{ //If user doesn't exist
             System.out.println("Error. No such user could be found. Please try again.");
-            showMenuChangeUser();
+            menuChangeUser();
         }
     }
 

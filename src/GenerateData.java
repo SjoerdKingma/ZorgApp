@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -80,7 +79,7 @@ public final class GenerateData {
         return result;
     }
 
-    public static ArrayList<Department> GenerateDepartments(){
+    public static ArrayList<Department> GenerateDepartmentsAndPatients(){
 
         ArrayList<Department> result = new ArrayList<>();
 
@@ -99,8 +98,8 @@ public final class GenerateData {
         fysioPatients.add(patients.get(4));
 
         result.add(new Department(0, DepartmentName.Huisarts, huisartsPatients));
-        result.add(new Department(0, DepartmentName.Tandarts, tandartsPatients));
-        result.add(new Department(0, DepartmentName.Fysio, fysioPatients));
+        result.add(new Department(1, DepartmentName.Tandarts, tandartsPatients));
+        result.add(new Department(2, DepartmentName.Fysio, fysioPatients));
         return result;
     }
 }

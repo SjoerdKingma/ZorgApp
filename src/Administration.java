@@ -22,8 +22,6 @@ public class Administration
    private final UserManager userManager;
    private PatientManager patientManager;
 
-   private DepartmentManager departmentManager;
-
    Administration(ArrayList<User> users)
    {
       userManager = new UserManager(users);

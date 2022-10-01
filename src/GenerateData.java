@@ -6,9 +6,35 @@ public final class GenerateData {
 
     public static ArrayList<User> GenerateUsers(){
         ArrayList<User> result = new ArrayList<>();
+        result.add(new Fysio(0, "Miguel Angelo"));
         result.add(new Fysio( 1, "Mart ElCamera"));
         result.add(new Huisarts( 2, "Roger Federer"));
         result.add(new Tandarts( 3, "Rafael Nadal"));
+        result.add(new Huisarts(4, "Tom Braaksma"));
+        return result;
+    }
+
+    public static ArrayList<Department> GenerateDepartmentsAndPatients(){
+
+        ArrayList<Department> result = new ArrayList<>();
+
+        ArrayList<Patient> patients = GeneratePatients();
+
+        ArrayList<Patient> huisartsPatients = new ArrayList<>();
+        huisartsPatients.add(patients.get(0));
+        huisartsPatients.add(patients.get(1));
+
+        ArrayList<Patient> tandartsPatients = new ArrayList<>();
+        tandartsPatients.add(patients.get(2));
+        tandartsPatients.add(patients.get(3));
+
+        ArrayList<Patient> fysioPatients = new ArrayList<>();
+        fysioPatients.add(patients.get(0));
+        fysioPatients.add(patients.get(4));
+
+        result.add(new Department(0, DepartmentName.Huisarts, huisartsPatients));
+        result.add(new Department(1, DepartmentName.Tandarts, tandartsPatients));
+        result.add(new Department(2, DepartmentName.Fysio, fysioPatients));
         return result;
     }
 
@@ -76,30 +102,6 @@ public final class GenerateData {
         result.add(new Medicine(2, "Amoxil", MedicineType.Pijstiller));
         result.add(new Medicine(3, "Cipro", MedicineType.Antibiotica));
         result.add(new Medicine(4, "Zithromax", MedicineType.Antibiotica));
-        return result;
-    }
-
-    public static ArrayList<Department> GenerateDepartmentsAndPatients(){
-
-        ArrayList<Department> result = new ArrayList<>();
-
-        ArrayList<Patient> patients = GeneratePatients();
-
-        ArrayList<Patient> huisartsPatients = new ArrayList<>();
-        huisartsPatients.add(patients.get(0));
-        huisartsPatients.add(patients.get(1));
-
-        ArrayList<Patient> tandartsPatients = new ArrayList<>();
-        tandartsPatients.add(patients.get(2));
-        tandartsPatients.add(patients.get(3));
-
-        ArrayList<Patient> fysioPatients = new ArrayList<>();
-        fysioPatients.add(patients.get(0));
-        fysioPatients.add(patients.get(4));
-
-        result.add(new Department(0, DepartmentName.Huisarts, huisartsPatients));
-        result.add(new Department(1, DepartmentName.Tandarts, tandartsPatients));
-        result.add(new Department(2, DepartmentName.Fysio, fysioPatients));
         return result;
     }
 }

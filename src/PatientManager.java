@@ -33,13 +33,13 @@ public class PatientManager {
         }
 
         try{
-            changePatient(patientId);
+            updateActivePatient(patientId);
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
         }
     }
-    Patient changePatient(int patientId) throws Exception
+    private Patient updateActivePatient(int patientId) throws Exception
     {
         Patient result = null;
 

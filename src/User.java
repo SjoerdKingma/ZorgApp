@@ -1,6 +1,12 @@
 import java.util.Scanner;
 public class User
 {
+   private final int EXIT = 0;
+   private final int SURNAME = 1;
+   private final int FIRST_NAME = 2;
+   private final int DATE_OF_BIRTH = 3;
+   private final int WEIGHT = 4;
+   private final int LENGTH = 5;
    private String userName;
    private int userID;
 
@@ -49,23 +55,23 @@ public class User
             System.out.format("Could not find field number: %d.\nPlease try again.\n", choice );
             menuEditPatient(currentPatient);
             break;
-         case 0://Exit prompt
+         case EXIT:
             return;
-         case 1://Surname3
+         case SURNAME:
             currentPatient.setSurname(inputValue);
             break;
-         case 2://First name
+         case FIRST_NAME:
             currentPatient.setFirstName(inputValue);
             break;
-         case 3://Date of birth
+         case DATE_OF_BIRTH:
             System.out.println("Please use this format: yyyy-mm-dd.");
             currentPatient.setDateOfBirth(ConversionHelper.stringToLocalDate(inputValue));
             break;
-         case 4://Weight
+         case WEIGHT:
             int weightInt = Integer.parseInt(inputValue);
             currentPatient.setWeight(weightInt);
             break;
-         case 5://Length
+         case LENGTH:
             float lengthFloat = Float.parseFloat(inputValue);
             currentPatient.setLength(lengthFloat);
             break;

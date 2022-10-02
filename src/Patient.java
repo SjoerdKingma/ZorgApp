@@ -68,19 +68,14 @@ public class Patient
       System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(calcBMI()) );
 
       System.out.format("\nPatiënt medicijnen:\n\n");
-      for(int i=0; i<prescriptions.size(); i++){
-         Prescription prescription = prescriptions.get(i);
-         System.out.format( "%-17s %s\n", "Medicijn naam: ", prescription.medicine.name);
-         System.out.format( "%-17s %s\n", "Medicijn type: ", prescription.medicine.type.toString());
-         System.out.format( "%-17s %s\n\n", "Dosering: ", prescription.dose);
-      }
+      prescriptions.forEach(x -> x.viewData());
    }
 
    //View Patient data but only display editable fields.
    //Adds an index to each option so the user can make a selection.
    public void viewEditableData(){
 
-      int columnHeader = 0; //Starting at 1 instead of 0 because 0 is reserved for 0. Stop
+      int columnHeader = 0;
 
       System.out.format( "===== Patient id=%d ==============================\n", id );
       System.out.format("%d: Stop\n", columnHeader);

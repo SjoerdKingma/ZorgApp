@@ -62,9 +62,6 @@ public class Administration
       switch (choice)
       {
          default:
-            System.out.println( "Please enter a *valid* digit" );
-            break;
-
          case ERROR:
             System.out.println( "Please enter a *valid* number." );
             break;
@@ -92,7 +89,7 @@ public class Administration
 
          case CHANGE_USER:
             userManager.menuChangeUser();
-            updateDepartmentAndPatients(); //After changing the user, the departments with patients list needs to be updated.
+            updateDepartmentAndPatients(); //After changing the user, the departments with patients needs to be updated.
             break;
       }
       return hasNextCycle;

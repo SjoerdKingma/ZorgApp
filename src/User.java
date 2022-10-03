@@ -111,8 +111,11 @@ public abstract class User
    }
 
    private void menuEditPatientPrescriptions(ArrayList<Prescription> prescriptions){
-      prescriptions.forEach(prescription -> prescription.viewData()); //Print prescriptions on screen
 
+      //Print prescriptions on screen
+      prescriptions.forEach(prescription -> prescription.viewData());
+
+      //Get user input
       Scanner scanner = new Scanner(System.in);
       System.out.println("Choose the id of the medicine you'd like to edit: ");
       int choice = scanner.nextInt();

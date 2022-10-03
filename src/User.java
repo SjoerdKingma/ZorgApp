@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class User
+public abstract class User
 {
    private final int STOP = 0;
    private final int SURNAME = 1;

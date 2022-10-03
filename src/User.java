@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class User
 {
-   private final int EXIT = 0;
+   private final int STOP = 0;
    private final int SURNAME = 1;
    private final int FIRST_NAME = 2;
    private final int DATE_OF_BIRTH = 3;
@@ -36,47 +36,55 @@ public class User
       patient.viewData();
    }
 
-   public void menuEditPatient(Patient currentPatient) {
-      currentPatient.viewEditableData();
+   public void menuEditPatient(Patient patient) {
+      patient.viewEditableData();
 
       Scanner scanner = new Scanner(System.in);
 
-      System.out.println("Choose which field number you'd like to edit, or enter 0 to quit: ");
+      System.out.println("Enter which field number you'd like to edit:");
       int choice = scanner.nextInt();
-      System.out.format("Enter the new value for field %d.\n", choice);
-      if(choice == 3){ //User wants to edit the Patient.dateOfBirth. So we have to tell the user which date format to use.
-         System.out.println("Use this date format: YYYY-MM-DD.");
-      }
+
       scanner = new Scanner(System.in);
-      String inputValue = scanner.nextLine();
+      String input = "";
 
       switch(choice){
          default:
             System.out.format("Could not find field number: %d.\nPlease try again.\n", choice );
-            menuEditPatient(currentPatient);
+            menuEditPatient(patient);
             break;
-         case EXIT:
+         case STOP:
             return;
          case SURNAME:
-            currentPatient.setSurname(inputValue);
+            System.out.println("Enter the new value for surname:");
+            input = scanner.nextLine();
+            patient.setSurname(input);
+            System.out.format("Patient surname was set to: %s", input);
             break;
          case FIRST_NAME:
-            currentPatient.setFirstName(inputValue);
+            System.out.println("Enter the new value for first name:");
+            input = scanner.nextLine();
+            patient.setFirstName(input);
+            System.out.format("Patient first name was set to: %s", input);
             break;
          case DATE_OF_BIRTH:
-            System.out.println("Please use this format: yyyy-mm-dd.");
-            currentPatient.setDateOfBirth(ConversionHelper.stringToLocalDate(inputValue));
+            System.out.println("Using this format: yyyy-mm-dd, enter the new value for date of birth:");
+            input = scanner.nextLine();
+            patient.setDateOfBirth(ConversionHelper.stringToLocalDate(input));
+            System.out.format("Patient date of birth was set to: %s", input);
             break;
          case WEIGHT:
-            int weightInt = Integer.parseInt(inputValue);
-            currentPatient.setWeight(weightInt);
+            System.out.println("Enter the new value for weight:");
+            input = scanner.nextLine();
+            patient.setWeight(Integer.parseInt(input));
+            System.out.format("Patient weight was set to: %s", input);
             break;
          case LENGTH:
-            float lengthFloat = Float.parseFloat(inputValue);
-            currentPatient.setLength(lengthFloat);
+            System.out.println("Enter the new value for length:");
+            input = scanner.nextLine();
+            patient.setLength(Float.parseFloat(input));
+            System.out.format("Patient length was set to: %s", input);
             break;
       }
-      System.out.format("Patient updated with new value: %s for field %d\n", inputValue, choice);
    }
 }
 

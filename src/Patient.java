@@ -45,6 +45,10 @@ public class Patient
 
    public void setDateOfBirth(LocalDate dateOfBirth){this.dateOfBirth = dateOfBirth;}
 
+   public ArrayList<Prescription> getPrescriptions(){
+      return this.prescriptions;
+   }
+
    Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions)
    {
       this.id = id;
@@ -55,7 +59,7 @@ public class Patient
       this.length = length;
       this.prescriptions = prescriptions;
    }
-   // Display patient data.
+   // View patient data.
    public void viewData()
    {
       System.out.format( "===== Patient id=%d ==============================\n", id );

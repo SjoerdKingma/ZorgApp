@@ -9,8 +9,10 @@ public final class GenerateData {
         result.add(new Fysio(0, "Miguel Angelo"));
         result.add(new Fysio( 1, "Mart ElCamera"));
         result.add(new Huisarts( 2, "Roger Federer"));
-        result.add(new Tandarts( 3, "Rafael Nadal"));
-        result.add(new Huisarts(4, "Tom Braaksma"));
+        result.add(new Huisarts(3, "Tom Braaksma"));
+        result.add(new Tandarts( 4, "Rafael Nadal"));
+        result.add(new Tandarts( 5, "Timo Stoepen"));
+
         return result;
     }
 
@@ -23,14 +25,20 @@ public final class GenerateData {
         ArrayList<Patient> huisartsPatients = new ArrayList<>();
         huisartsPatients.add(patients.get(0));
         huisartsPatients.add(patients.get(1));
+        huisartsPatients.add(patients.get(2));
+        huisartsPatients.add(patients.get(3));
 
         ArrayList<Patient> tandartsPatients = new ArrayList<>();
-        tandartsPatients.add(patients.get(2));
+        tandartsPatients.add(patients.get(0));
+        tandartsPatients.add(patients.get(1));
         tandartsPatients.add(patients.get(3));
+        tandartsPatients.add(patients.get(6));
 
         ArrayList<Patient> fysioPatients = new ArrayList<>();
         fysioPatients.add(patients.get(0));
+        fysioPatients.add(patients.get(2));
         fysioPatients.add(patients.get(4));
+        fysioPatients.add(patients.get(5));
 
         result.add(new Department(0, DepartmentName.Huisarts, huisartsPatients));
         result.add(new Department(1, DepartmentName.Tandarts, tandartsPatients));
@@ -69,11 +77,23 @@ public final class GenerateData {
                 107, 1.68f, prescriptions
         );
 
+        Patient p6 = new Patient(6, "Visser", "Tjitske",
+                LocalDate.of(1983, 2, 12),
+                80, 1.89f, prescriptions
+        );
+
+        Patient p7 = new Patient(7, "Hoekstra", "Piebe",
+                LocalDate.of(2003, 2, 24),
+                95, 2.03f, prescriptions
+        );
+
         result.add((p1));
         result.add((p2));
         result.add((p3));
         result.add((p4));
         result.add((p5));
+        result.add((p6));
+        result.add((p7));
 
         return result;
     }

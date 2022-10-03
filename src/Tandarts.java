@@ -18,7 +18,7 @@ public class Tandarts extends User{
         System.out.format( "%-17s %s\n", "Date of birth:", patient.getDateOfBirth() );
 
         System.out.format("\nPatiënt medicijnen:\n\n");
-        patient.getPrescriptions().forEach( prescription -> prescription.viewData());
+        patient.getPrescriptions().forEach( prescription -> prescription.viewDataAsList());
     }
 
     public void menuEditPatient(Patient patient) {

@@ -10,6 +10,11 @@ public class Prescription {
     }
 
     public void viewData(){
+        System.out.format("%d, %s (%s) %s\n", this.id, this.medicine.name, this.dose);
+    }
+
+    public void viewDataAsList(){
+        System.out.format( "%-17s %s\n", "Medicijn id: ", this.medicine.id);
         System.out.format( "%-17s %s\n", "Medicijn naam: ", this.medicine.name);
         System.out.format( "%-17s %s\n", "Medicijn type: ", this.medicine.type.toString());
         System.out.format( "%-17s %s\n\n", "Dosering: ", this.dose);

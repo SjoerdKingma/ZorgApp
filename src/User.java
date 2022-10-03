@@ -1,16 +1,22 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public abstract class User
 {
+   //Menu options
    private final int STOP = 0;
    private final int SURNAME = 1;
    private final int FIRST_NAME = 2;
    private final int DATE_OF_BIRTH = 3;
    private final int WEIGHT = 4;
    private final int LENGTH = 5;
+   private final int MEDICINES = 6;
+
+   //Fields
    private String userName;
    private int userID;
-
    private DepartmentName departmentName;
+
+   //Getters and Setters
    public String getUserName()
    {
       return userName;
@@ -24,6 +30,7 @@ public abstract class User
       return this.departmentName;
    }
 
+   //Constructor
    public User( int id, String name, DepartmentName departmentName)
    {
       this.userID   = id;
@@ -31,13 +38,14 @@ public abstract class User
       this.departmentName = departmentName;
    }
 
+   //Methods
    public void viewPatientData( Patient patient )
    {
-      patient.viewData();
+      patient.viewData(); //View all patient data without any restrictions from roles.
    }
 
    public void menuEditPatient(Patient patient) {
-      patient.viewEditableData();
+      viewPatientEditableData(patient);
 
       Scanner scanner = new Scanner(System.in);
 
@@ -84,7 +92,32 @@ public abstract class User
             patient.setLength(Float.parseFloat(input));
             System.out.format("Patient length was set to: %s", input);
             break;
+         case MEDICINES:
+            menuEditPatientPrescriptions(patient.getPrescriptions());
+            break;
       }
+   }
+
+   //View Patient data but only display editable fields.
+   private void viewPatientEditableData(Patient patient){
+      System.out.format( "===== Patient id=%d ==============================\n", patient.getPatientId() );
+      System.out.format("%d: Stop\n", STOP);
+      System.out.format( "%d: %-17s %s\n",SURNAME, "Surname:", patient.getSurname() );
+      System.out.format( "%d: %-17s %s\n",FIRST_NAME, "FirstName:", patient.getFirstName() );
+      System.out.format( "%d: %-17s %s\n",DATE_OF_BIRTH, "Date of birth:", patient.getDateOfBirth() );
+      System.out.format( "%d: %-17s %s\n",WEIGHT, "Weight: ", patient.getWeight() );
+      System.out.format( "%d: %-17s %s\n",LENGTH, "Length: ", ConversionHelper.addTwoDecimals(patient.getLength()) );
+      System.out.format( "%d: %-17s \n",MEDICINES, "Medicinelist ");
+   }
+
+   private void menuEditPatientPrescriptions(ArrayList<Prescription> prescriptions){
+      prescriptions.forEach(prescription -> prescription.viewData()); //Print prescriptions on screen
+
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("Choose the id of the medicine you'd like to edit: ");
+      int choice = scanner.nextInt();
+
+      //TODO: Handle input
    }
 }
 

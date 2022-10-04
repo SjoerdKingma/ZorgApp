@@ -1,5 +1,5 @@
 enum MedicineType{
-    Pijstiller,
+    Pijnstiller,
     Antibiotica
 }
 

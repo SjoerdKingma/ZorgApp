@@ -117,9 +117,9 @@ public final class GenerateData {
 
     private static ArrayList<Medicine> GenerateMedicines(){
         ArrayList<Medicine> result = new ArrayList<>();
-        result.add(new Medicine(0, "Advil", MedicineType.Pijstiller));
-        result.add(new Medicine(1, "Panadol", MedicineType.Pijstiller));
-        result.add(new Medicine(2, "Amoxil", MedicineType.Pijstiller));
+        result.add(new Medicine(0, "Advil", MedicineType.Pijnstiller));
+        result.add(new Medicine(1, "Panadol", MedicineType.Pijnstiller));
+        result.add(new Medicine(2, "Amoxil", MedicineType.Pijnstiller));
         result.add(new Medicine(3, "Cipro", MedicineType.Antibiotica));
         result.add(new Medicine(4, "Zithromax", MedicineType.Antibiotica));
         return result;

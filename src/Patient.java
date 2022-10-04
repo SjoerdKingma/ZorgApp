@@ -66,6 +66,7 @@ public class Patient
       System.out.format( "%-17s %s\n", "Length: ", ConversionHelper.addTwoDecimals(length) );
       System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(calcBMI()) );
 
+      System.out.println("\nList of medicines: ");
       this.prescriptions.forEach(prescription -> prescription.viewDataAsList());
    }
 

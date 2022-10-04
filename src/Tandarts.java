@@ -60,11 +60,14 @@ public class Tandarts extends User{
         }
     }
 
-    private void viewPatientEditableData(Patient patient){
-        System.out.format( "===== Patient id=%d ==============================\n", patient.getPatientId());
+    protected void viewPatientEditableData(Patient patient){
+        System.out.format("===== Patient id=%d ==============================\n", patient.getPatientId());
         System.out.format("%d: Stop\n", STOP);
-        System.out.format( "%d: %-17s %s\n",SURNAME, "Surname:", patient.getSurname() );
-        System.out.format( "%d: %-17s %s\n",FIRST_NAME, "FirstName:", patient.getFirstName() );
-        System.out.format( "%d: %-17s %s\n",DATE_OF_BIRTH, "Date of birth:", patient.getDateOfBirth() );
+        System.out.format("%d: %-17s %s\n", SURNAME, "Surname:", patient.getSurname());
+        System.out.format("%d: %-17s %s\n", FIRST_NAME, "FirstName:", patient.getFirstName());
+        System.out.format("%d: %-17s %s\n", DATE_OF_BIRTH, "Date of birth:", patient.getDateOfBirth());
+        System.out.format("%d: %-17s %s\n", WEIGHT, "Weight: ", patient.getWeight());
+        System.out.format("%d: %-17s %s\n", LENGTH, "Length: ", ConversionHelper.addTwoDecimals(patient.getLength()));
+        System.out.format("%d: %-17s \n", MEDICINES, "Medicine list");
     }
 }

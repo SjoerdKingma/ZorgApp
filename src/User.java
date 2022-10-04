@@ -2,20 +2,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public abstract class User {
    //Global menu fields
-   private final int STOP = 0;
+   protected final int STOP = 0;
 
    //Patient menu fields
-   private final int SURNAME = 1;
-   private final int FIRST_NAME = 2;
-   private final int DATE_OF_BIRTH = 3;
-   private final int WEIGHT = 4;
-   private final int LENGTH = 5;
-   private final int MEDICINES = 6;
+   protected final int SURNAME = 1;
+   protected final int FIRST_NAME = 2;
+   protected final int DATE_OF_BIRTH = 3;
+   protected final int WEIGHT = 4;
+   protected final int LENGTH = 5;
+   protected final int MEDICINES = 6;
 
    //Prescription menu fields
-   private final int PRESCRIPTION_NAME = 1;
-   private final int PRESCRIPTION_TYPE = 2;
-   private final int PRESCRIPTION_DOSE = 3;
+   protected final int PRESCRIPTION_NAME = 1;
+   protected final int PRESCRIPTION_TYPE = 2;
+   protected final int PRESCRIPTION_DOSE = 3;
 
    //Fields
    private String userName;
@@ -102,7 +102,7 @@ public abstract class User {
    }
 
    //View Patient data but only display editable fields.
-   private void viewPatientEditableData(Patient patient) {
+   protected void viewPatientEditableData(Patient patient) {
       System.out.format("===== Patient id=%d ==============================\n", patient.getPatientId());
       System.out.format("%d: Stop\n", STOP);
       System.out.format("%d: %-17s %s\n", SURNAME, "Surname:", patient.getSurname());
@@ -129,9 +129,9 @@ public abstract class User {
 
       //Print prescription editable fields on screen
       System.out.format("\n%d. STOP\n", STOP);
-      System.out.format("%d. Medicine name: %s.\n", PRESCRIPTION_NAME, prescription.medicine.name);
+      System.out.format("%d. Medicine naam: %s.\n", PRESCRIPTION_NAME, prescription.medicine.name);
       System.out.format("%d. Medicine type: %s.\n", PRESCRIPTION_TYPE, prescription.medicine.type);
-      System.out.format("%d. Medicine dose: %s\n", PRESCRIPTION_DOSE, prescription.dose);
+      System.out.format("%d. Medicine dosering: %s\n", PRESCRIPTION_DOSE, prescription.dose);
 
       System.out.println("Enter the number of the field you'd like to edit: ");
 

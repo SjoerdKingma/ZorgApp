@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Fysio extends User{
 
-    private final int LUNG_CAPACITY = 7;
+    private final int LUNG_CAPACITY = 6;
     public Fysio(int id, String name){
         super(id, name, DepartmentName.Fysio);
     }

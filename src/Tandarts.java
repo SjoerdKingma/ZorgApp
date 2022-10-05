@@ -57,6 +57,9 @@ public class Tandarts extends User{
                 patient.setDateOfBirth(ConversionHelper.stringToLocalDate(input));
                 System.out.format("Patient date of birth was set to: %s", input);
                 break;
+            case MEDICINES:
+                menuEditPatientPrescriptions(patient.getPrescriptions());
+                break;
         }
     }
 

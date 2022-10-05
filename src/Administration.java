@@ -19,13 +19,14 @@ public class Administration
    private static final int CHANGE_USER = 5;
 
    private final ArrayList<Department> departments; //Also contains patients
+   private Department currentDepartment;
    private final UserManager userManager;
-   private PatientManager patientManager;
 
    Administration(ArrayList<User> users)
    {
       userManager = new UserManager(users);
       this.departments = GenerateData.GenerateDepartmentsAndPatients();
+      currentDepartment = departments.stream().filter(x -> x.getName() == userManager.getCurrentUser().getDepartmentName()).findAny().get();
       updateDepartmentAndPatients();
    }
    public void menu()
@@ -37,7 +38,7 @@ public class Administration
 
          System.out.format( "\n%s\n\n", "=".repeat( 80 ) );
          System.out.format( "Current user: [%d] %s [%s]\n", currentUser.getUserID() , currentUser.getUserName(),currentUser.getDepartmentName().toString());
-         System.out.format( "Current patient: [%d] %s\n", patientManager.currentPatient.getPatientId(), patientManager.currentPatient.fullName() );
+         System.out.format( "Current patient: [%d] %s\n", currentDepartment.patientManager.currentPatient.getPatientId(), currentDepartment.patientManager.currentPatient.fullName() );
 
          // Print menu on screen
          System.out.format( "%d:  STOP\n", STOP );
@@ -72,19 +73,19 @@ public class Administration
 
          case VIEW_ALL_PATIENTS:
             System.out.println("");
-            patientManager.viewAllPatients();
+            currentDepartment.patientManager.viewAllPatients();
             break;
 
          case VIEW_CURRENT_PATIENT:
-            userManager.getCurrentUser().viewPatientData(patientManager.currentPatient);
+            userManager.getCurrentUser().viewPatientData(currentDepartment.patientManager.currentPatient);
             break;
 
          case EDIT_PATIENT:
-            userManager.getCurrentUser().menuEditPatient(patientManager.currentPatient);
+            userManager.getCurrentUser().menuEditPatient(currentDepartment.patientManager.currentPatient);
             break;
 
          case CHANGE_PATIENT:
-            patientManager.menuChangePatient();
+            currentDepartment.patientManager.menuChangePatient();
             break;
 
          case CHANGE_USER:
@@ -118,7 +119,7 @@ public class Administration
    
    private void updateDepartmentAndPatients(){
       DepartmentName departmentName = userManager.getCurrentUser().getDepartmentName();
-      ArrayList<Patient> patients = departments.stream().filter(x -> x.getName() == departmentName).findFirst().get().patients;
-      this.patientManager = new PatientManager(patients);
+      this.currentDepartment = departments.stream().filter(x -> x.getName() == departmentName).findAny().get();
+      //ArrayList<Patient> patients = departments.stream().filter(x -> x.getName() == departmentName).findFirst().get().patientManager.patients;
    }
 }

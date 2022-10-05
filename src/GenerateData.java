@@ -40,9 +40,9 @@ public final class GenerateData {
         fysioPatients.add(patients.get(4));
         fysioPatients.add(patients.get(5));
 
-        result.add(new Department(0, DepartmentName.Huisarts, huisartsPatients));
-        result.add(new Department(1, DepartmentName.Tandarts, tandartsPatients));
-        result.add(new Department(2, DepartmentName.Fysio, fysioPatients));
+        result.add(new Department(0, DepartmentName.Huisarts,  new PatientManager(huisartsPatients)));
+        result.add(new Department(1, DepartmentName.Tandarts, new PatientManager(tandartsPatients)));
+        result.add(new Department(2, DepartmentName.Fysio, new PatientManager(fysioPatients)));
         return result;
     }
 

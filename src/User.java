@@ -113,7 +113,7 @@ public abstract class User {
       System.out.format("%d: %-17s \n", MEDICINES, "Medicine list");
    }
 
-   private void menuEditPatientPrescriptions(ArrayList<Prescription> prescriptions) {
+   protected void menuEditPatientPrescriptions(ArrayList<Prescription> prescriptions) {
 
       //Print prescriptions on screen
       System.out.println("\nList of medicines: ");

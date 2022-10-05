@@ -1,8 +1,25 @@
 import java.util.Scanner;
 
 public class Fysio extends User{
+
+    private final int LUNG_CAPACITY = 7;
     public Fysio(int id, String name){
         super(id, name, DepartmentName.Fysio);
+    }
+
+    public void viewPatientData(Patient patient) {
+        System.out.format( "===== Patient id=%d ==============================\n", patient.getPatientId() );
+        System.out.format( "%-17s %s\n", "Surname:", patient.getSurname() );
+        System.out.format( "%-17s %s\n", "FirstName:", patient.getFirstName() );
+        System.out.format( "%-17s %s\n", "Age: ", patient.calcAge() );
+        System.out.format( "%-17s %s\n", "Date of birth:", patient.getDateOfBirth());
+        System.out.format( "%-17s %s\n", "Weight: ", patient.getWeight() );
+        System.out.format( "%-17s %s\n", "Length: ", ConversionHelper.addTwoDecimals(patient.getLength()) );
+        System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(patient.calcBMI()) );
+        System.out.format( "%-17s %s\n", "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()) );
+
+        System.out.println("\nList of medicines: ");
+        patient.getPrescriptions().forEach(prescription -> prescription.viewDataAsList());
     }
 
     public void menuEditPatient(Patient patient) {
@@ -53,6 +70,12 @@ public class Fysio extends User{
                 patient.setLength(Float.parseFloat(input));
                 System.out.format("Patient length was set to: %s", input);
                 break;
+            case LUNG_CAPACITY:
+                System.out.println("Enter the new value for lung capacity:");
+                input = scanner.nextLine();
+                patient.setLungCapacity(Float.parseFloat(input));
+                System.out.format("Patient lung capacity was set to: %s", input);
+
         }
     }
     protected void viewPatientEditableData(Patient patient) {
@@ -63,5 +86,6 @@ public class Fysio extends User{
         System.out.format("%d: %-17s %s\n", DATE_OF_BIRTH, "Date of birth:", patient.getDateOfBirth());
         System.out.format("%d: %-17s %s\n", WEIGHT, "Weight: ", patient.getWeight());
         System.out.format("%d: %-17s %s\n", LENGTH, "Length: ", ConversionHelper.addTwoDecimals(patient.getLength()));
+        System.out.format("%d: %-17s %s\n", LUNG_CAPACITY, "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()));
     }
 }

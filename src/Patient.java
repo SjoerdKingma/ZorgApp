@@ -10,6 +10,9 @@ public class Patient
    private LocalDate dateOfBirth;
    private int weight;
    private float length;
+
+   private float lungCapacity;
+
    private ArrayList<Prescription> prescriptions;
 
    public int getPatientId(){return id;}
@@ -42,6 +45,14 @@ public class Patient
 
    public ArrayList<Prescription> getPrescriptions(){
       return this.prescriptions;
+   }
+
+   public float getLungCapacity(){
+      return this.lungCapacity;
+   }
+
+   public void  setLungCapacity(float lungCapacity){
+      this.lungCapacity = lungCapacity;
    }
 
    Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions)

@@ -3,7 +3,9 @@ import java.util.Scanner;
 
 public class PatientManager {
     //Field: patients
-    ArrayList<Patient> patients;
+    ArrayList<Patient> patients; //Only contains patients from the current department.
+
+    public static ArrayList<Patient> allPatients;
     Patient currentPatient;
 
     public PatientManager(ArrayList<Patient> patientList){

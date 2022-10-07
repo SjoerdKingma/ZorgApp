@@ -21,6 +21,7 @@ public final class GenerateData {
         ArrayList<Department> result = new ArrayList<>();
 
         ArrayList<Patient> patients = GeneratePatients();
+        PatientManager.allPatients = patients;
 
         ArrayList<Patient> huisartsPatients = new ArrayList<>();
         huisartsPatients.add(patients.get(0));
@@ -46,7 +47,7 @@ public final class GenerateData {
         return result;
     }
 
-    private static ArrayList<Patient> GeneratePatients(){
+    public static ArrayList<Patient> GeneratePatients(){
         ArrayList<Patient> result = new ArrayList<>();
 
         ArrayList<Prescription> prescriptions = GeneratePrescriptions();

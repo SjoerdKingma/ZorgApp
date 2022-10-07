@@ -17,8 +17,7 @@ public class Administration
    private static final int EDIT_PATIENT = 3;
    private static final int CHANGE_PATIENT = 4;
    private static final int CHANGE_USER = 5;
-
-   private final ArrayList<Department> departments; //Also contains patients
+   private ArrayList<Department> departments; //Also contains the patients for this department
    private Department currentDepartment;
    private final UserManager userManager;
 

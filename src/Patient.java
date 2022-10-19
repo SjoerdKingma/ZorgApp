@@ -68,7 +68,7 @@ public class Patient
    // View patient data.
    public void viewData()
    {
-      System.out.format( "===== Patient id=%d ==============================\n", id );
+      System.out.format( "===== Patiënt id=%d ==============================\n", id );
       System.out.format( "%-17s %s\n", "Surname:", surname );
       System.out.format( "%-17s %s\n", "FirstName:", firstName );
       System.out.format( "%-17s %s\n", "Age: ", calcAge() );

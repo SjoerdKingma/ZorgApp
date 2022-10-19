@@ -52,7 +52,7 @@ public abstract class User {
 
       Scanner scanner = new Scanner(System.in);
 
-      System.out.println("Enter which field number you'd like to edit:");
+      System.out.println("Voer het veldnummer in van het veld dat u wilt veranderen: ");
       int choice = scanner.nextInt();
 
       scanner = new Scanner(System.in);
@@ -61,39 +61,40 @@ public abstract class User {
       switch (choice) {
          default:
             System.out.format("Could not find field number: %d.\nPlease try again.\n", choice);
+            System.out.format("Kon het veld vor nummer: %d niet vinden. \nProbeer het opnieuw.\n", choice);
             menuEditPatient(patient);
             break;
          case STOP:
             return;
          case SURNAME:
-            System.out.println("Enter the new value for surname:");
+            System.out.println("Voer de nieuwe waarde in voor de achternaam: ");
             input = scanner.nextLine();
             patient.setSurname(input);
-            System.out.format("Patient surname was set to: %s", input);
+            System.out.format("Achternaam veranderd naar: %s", input);
             break;
          case FIRST_NAME:
-            System.out.println("Enter the new value for first name:");
+            System.out.println("Voer de nieuwe waarde in voor de voornaam:");
             input = scanner.nextLine();
             patient.setFirstName(input);
-            System.out.format("Patient first name was set to: %s", input);
+            System.out.format("Voornaam veranderd naar: %s", input);
             break;
          case DATE_OF_BIRTH:
-            System.out.println("Using this format: yyyy-mm-dd, enter the new value for date of birth:");
+            System.out.println("Voer de nieuwe waarde in voor geboortedatum. Gebruik dit formaat: yyyy-mm-dd:");
             input = scanner.nextLine();
             patient.setDateOfBirth(ConversionHelper.stringToLocalDate(input));
-            System.out.format("Patient date of birth was set to: %s", input);
+            System.out.format("Geboortedatum veranderd naar: %s", input);
             break;
          case WEIGHT:
-            System.out.println("Enter the new value for weight:");
+            System.out.println("Voer de nieuwe waarde in voor het gewicht (kg):");
             input = scanner.nextLine();
             patient.setWeight(Integer.parseInt(input));
-            System.out.format("Patient weight was set to: %s", input);
+            System.out.format("Gewicht veranderd naar: %s kg", input);
             break;
          case LENGTH:
-            System.out.println("Enter the new value for length:");
+            System.out.println("Voer de nieuwe waarde in voor de lengte (m):");
             input = scanner.nextLine();
             patient.setLength(Float.parseFloat(input));
-            System.out.format("Patient length was set to: %s", input);
+            System.out.format("Lengte veranderd naar: %s m", input);
             break;
          case MEDICINES:
             menuEditPatientPrescriptions(patient.getPrescriptions());
@@ -105,23 +106,23 @@ public abstract class User {
    protected void viewPatientEditableData(Patient patient) {
       System.out.format("===== Patient id=%d ==============================\n", patient.getPatientId());
       System.out.format("%d: Stop\n", STOP);
-      System.out.format("%d: %-17s %s\n", SURNAME, "Surname:", patient.getSurname());
-      System.out.format("%d: %-17s %s\n", FIRST_NAME, "FirstName:", patient.getFirstName());
-      System.out.format("%d: %-17s %s\n", DATE_OF_BIRTH, "Date of birth:", patient.getDateOfBirth());
-      System.out.format("%d: %-17s %s kg\n", WEIGHT, "Weight: ", patient.getWeight());
-      System.out.format("%d: %-17s %s m\n", LENGTH, "Length: ", ConversionHelper.addTwoDecimals(patient.getLength()));
-      System.out.format("%d: %-17s \n", MEDICINES, "Medicine list");
+      System.out.format("%d: %-17s %s\n", SURNAME, "Achternaam:", patient.getSurname());
+      System.out.format("%d: %-17s %s\n", FIRST_NAME, "Voornaam:", patient.getFirstName());
+      System.out.format("%d: %-17s %s\n", DATE_OF_BIRTH, "Geboortedatum:", patient.getDateOfBirth());
+      System.out.format("%d: %-17s %s kg\n", WEIGHT, "Gewicht: ", patient.getWeight());
+      System.out.format("%d: %-17s %s m\n", LENGTH, "Lengte: ", ConversionHelper.addTwoDecimals(patient.getLength()));
+      System.out.format("%d: %-17s \n", MEDICINES, "Medicijnenlijst");
    }
 
    protected void menuEditPatientPrescriptions(ArrayList<Prescription> prescriptions) {
 
       //Print prescriptions on screen
-      System.out.println("\nList of medicines: ");
+      System.out.println("\nLijst van medicijnen: ");
       prescriptions.forEach(prescription -> prescription.viewDataAsEditableList());
 
       //Get user input
       Scanner scanner = new Scanner(System.in);
-      System.out.println("Choose the id of the medicine you'd like to edit: ");
+      System.out.println("Voer het ID in van de medicijn die u wilt aanpassen: ");
       int prescriptionId = scanner.nextInt();
 
       //Handle user input
@@ -129,11 +130,11 @@ public abstract class User {
 
       //Print prescription editable fields on screen
       System.out.format("\n%d. STOP\n", STOP);
-      System.out.format("%d. Medicine naam: %s.\n", PRESCRIPTION_NAME, prescription.medicine.name);
-      System.out.format("%d. Medicine type: %s.\n", PRESCRIPTION_TYPE, prescription.medicine.type);
-      System.out.format("%d. Medicine dosering: %s\n", PRESCRIPTION_DOSE, prescription.dose);
+      System.out.format("%d. Medicijn naam: %s.\n", PRESCRIPTION_NAME, prescription.medicine.name);
+      System.out.format("%d. Medicijn type: %s.\n", PRESCRIPTION_TYPE, prescription.medicine.type);
+      System.out.format("%d. Medicijn dosering: %s\n", PRESCRIPTION_DOSE, prescription.dose);
 
-      System.out.println("Enter the number of the field you'd like to edit: ");
+      System.out.println("Voer het nummer in van het veld dat u went aan te passen: ");
 
       //Get user input
       Scanner scanner2 = new Scanner(System.in);
@@ -141,25 +142,25 @@ public abstract class User {
 
       switch (fieldChoice) {
          default:
-            System.out.println("Could not find the number of the field. Please try again.");
+            System.out.println("Kon het opgegeven nummer niet vinden. Probeer het opnieuw.");
             menuEditPatientPrescriptions(prescriptions);
             break;
          case STOP:
             return;
          case PRESCRIPTION_NAME: {
-            System.out.println("Enter the new name for the medicine: ");
+            System.out.println("Voer de nieuwe naam in voor het medicijn: ");
             Scanner scanner3 = new Scanner(System.in);
             String medicineName = scanner3.nextLine();
             prescription.medicine.name = medicineName;
-            System.out.format("\nMedicine name succesfully updated to value: %s", medicineName);
+            System.out.format("\nMedicijn naam is veranderd naar:  %s", medicineName);
             break;
          }
          case PRESCRIPTION_TYPE: {
-            System.out.println("Medicine types:");
+            System.out.println("Medicijn types:");
             System.out.println("1. Pijnstiller");
             System.out.println("2. Antibiotica");
 
-            System.out.println("Select the number of which type you'd like to update the medicine with: ");
+            System.out.println("Selecteer de nieuwe type prescription: ");
 
             Scanner scanner4 = new Scanner(System.in);
             int prescriptionTypeChoice = scanner4.nextInt();
@@ -169,13 +170,13 @@ public abstract class User {
                case 1:
                {
                   prescription.medicine.type = MedicineType.Pijnstiller;
-                  System.out.format("\nMedicine type succesfully updated to value: %s", MedicineType.Pijnstiller.toString());
+                  System.out.format("\nMedicijn type veranderd naar: %s", MedicineType.Pijnstiller);
                   break;
                }
                case 2:
                {
                   prescription.medicine.type = MedicineType.Antibiotica;
-                  System.out.format("\nMedicine type succesfully updated to value: %s", MedicineType.Antibiotica.toString());
+                  System.out.format("\nMedicijn type veranderd naar: %s", MedicineType.Antibiotica);
                   break;
                }
             }
@@ -183,11 +184,11 @@ public abstract class User {
          }
          case PRESCRIPTION_DOSE:
          {
-            System.out.println("Enter the new dose: ");
+            System.out.println("Voer de nieuwe dosering in: ");
             Scanner scanner3 = new Scanner(System.in);
             String dose = scanner3.nextLine();
             prescription.dose = dose;
-            System.out.format("\nMedicine dose succesfully updated to value: %s", dose);
+            System.out.format("\nMedicijn dosering veranderd naar: %s", dose);
             break;
          }
       }

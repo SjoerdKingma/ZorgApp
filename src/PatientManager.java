@@ -14,23 +14,23 @@ public class PatientManager {
     }
 
     public void viewAllPatients() {
-        System.out.println("List of patients.");
+        System.out.println("Lijst van patiënten.");
 
         for(int i=0; i<patients.size(); i++){
             Patient p = patients.get(i);
-            System.out.format("%-3d %-20s %-16s Patient ID: %s\n", i, p.getSurname(), p.getDateOfBirth(), p.getPatientId());
+            System.out.format("%-3d %-20s %-16s Patiënt ID: %s\n", i, p.getSurname(), p.getDateOfBirth(), p.getPatientId());
         }
     }
 
     public void menuChangePatient(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the patient ID:");
+        System.out.println("Voer de patiënt ID in:");
         int patientId = 0;
         try{
             patientId = scanner.nextInt();
         }
         catch(Exception ex){
-            System.out.println("Please enter a valid number.");
+            System.out.println("Voer een geldig *nummer* in.");
             menuChangePatient(); //Show the menu again
         }
 
@@ -52,7 +52,7 @@ public class PatientManager {
             }
         }
         if(result == null){
-            throw new Exception("Error! Could not find the Patient. Please check if the provided Patient ID is correct.");
+            throw new Exception("Error! Kon de opgegeven patiënt niet vinden. Controleer of de patiënt ID juist is.");
         }
 
         currentPatient = result; //Update current patent

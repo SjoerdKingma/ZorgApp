@@ -32,14 +32,14 @@ public class UserManager {
     public void menuChangeUser(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter your user Id to log in:");
+        System.out.println("Voer je gebruikers ID in om in te loggen:");
         int userId = 0;
         try{
             userId = scanner.nextInt();
         }
         catch(Exception ex){
             //System.out.println("Exception error! Message: " + ex);
-            System.out.println("Please enter a valid number.");
+            System.out.println("Voer een geldig *nummer* in.");
             menuChangeUser();
         }
 
@@ -51,7 +51,7 @@ public class UserManager {
             currentUser = getUserFromUserId((userId)); //Store current user in a variable
         }
         else{ //If user doesn't exist
-            System.out.println("Error. No such user could be found. Please try again.");
+            System.out.println("Error. Kon de opgegeven gebruiker niet vinden. Probeer het opnieuw.");
             menuChangeUser();
         }
     }

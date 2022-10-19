@@ -12,10 +12,10 @@ public class Tandarts extends User{
 
     public void viewPatientData(Patient patient){
         System.out.format( "===== Patient id=%d ==============================\n", patient.getPatientId());
-        System.out.format( "%-17s %s\n", "Surname:", patient.getSurname() );
-        System.out.format( "%-17s %s\n", "FirstName:", patient.getFirstName() );
-        System.out.format( "%-17s %s\n", "Age: ", patient.calcAge() );
-        System.out.format( "%-17s %s\n", "Date of birth:", patient.getDateOfBirth() );
+        System.out.format( "%-17s %s\n", "Achternaam:", patient.getSurname() );
+        System.out.format( "%-17s %s\n", "Voornaam:", patient.getFirstName() );
+        System.out.format( "%-17s %s\n", "Leeftijd: ", patient.calcAge() );
+        System.out.format( "%-17s %s\n", "Geboortedatum:", patient.getDateOfBirth() );
 
         System.out.format("\nPatiënt medicijnen:\n\n");
         patient.getPrescriptions().forEach( prescription -> prescription.viewDataAsList());
@@ -26,7 +26,7 @@ public class Tandarts extends User{
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter which field number you'd like to edit:");
+        System.out.println("Voer het veldnummer in van het veld dat u wenst aan te passen: ");
         int choice = scanner.nextInt();
 
         scanner = new Scanner(System.in);
@@ -34,28 +34,28 @@ public class Tandarts extends User{
 
         switch(choice){
             default:
-                System.out.format("Could not find field number: %d.\nPlease try again.\n", choice );
+                System.out.format("Kon het veld met veldnummer: %d niet vinden.\nProbeer het opnieuw.\n", choice );
                 menuEditPatient(patient);
                 break;
             case STOP:
                 return;
             case SURNAME:
-                System.out.println("Enter the new value for surname:");
+                System.out.println("Voer de nieuwe waarde in voor de achternaam:");
                 input = scanner.nextLine();
                 patient.setSurname(input);
-                System.out.format("Patient surname was set to: %s", input);
+                System.out.format("Achternaam veranderd naar: %s", input);
                 break;
             case FIRST_NAME:
-                System.out.println("Enter the new value for first name:");
+                System.out.println("Voer de nieuwe waarde in voor de voornaam: ");
                 input = scanner.nextLine();
                 patient.setFirstName(input);
-                System.out.format("Patient first name was set to: %s", input);
+                System.out.format("Voornaam veranderd naar: %s", input);
                 break;
             case DATE_OF_BIRTH:
-                System.out.println("Using this format: yyyy-mm-dd, enter the new value for date of birth:");
+                System.out.println("Voer de nieuwe waarde in voor geboortedatum. Gebruik dit formaat: yyyy-mm-dd: ");
                 input = scanner.nextLine();
                 patient.setDateOfBirth(ConversionHelper.stringToLocalDate(input));
-                System.out.format("Patient date of birth was set to: %s", input);
+                System.out.format("Geboortedatum veranderd naar: %s", input);
                 break;
             case MEDICINES:
                 menuEditPatientPrescriptions(patient.getPrescriptions());
@@ -66,9 +66,9 @@ public class Tandarts extends User{
     protected void viewPatientEditableData(Patient patient){
         System.out.format("===== Patient id=%d ==============================\n", patient.getPatientId());
         System.out.format("%d: Stop\n", STOP);
-        System.out.format("%d: %-17s %s\n", SURNAME, "Surname:", patient.getSurname());
-        System.out.format("%d: %-17s %s\n", FIRST_NAME, "FirstName:", patient.getFirstName());
-        System.out.format("%d: %-17s %s\n", DATE_OF_BIRTH, "Date of birth:", patient.getDateOfBirth());
-        System.out.format("%d: %-17s \n", MEDICINES, "Medicine list");
+        System.out.format("%d: %-17s %s\n", SURNAME, "Achternaam:", patient.getSurname());
+        System.out.format("%d: %-17s %s\n", FIRST_NAME, "Voornaam:", patient.getFirstName());
+        System.out.format("%d: %-17s %s\n", DATE_OF_BIRTH, "Geboortedatum:", patient.getDateOfBirth());
+        System.out.format("%d: %-17s \n", MEDICINES, "Medicijnenlijst");
     }
 }

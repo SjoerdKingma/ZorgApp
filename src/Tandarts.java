@@ -6,8 +6,8 @@ public class Tandarts extends User{
     private final int SURNAME = 1;
     private final int FIRST_NAME = 2;
     private final int DATE_OF_BIRTH = 3;
-    public Tandarts(int id, String name){
-        super(id, name, DepartmentName.Tandarts);
+    public Tandarts(int id, String name, String password){
+        super(id, name, "Pietje", DepartmentName.Tandarts);
     }
 
     public void viewPatientData(Patient patient){

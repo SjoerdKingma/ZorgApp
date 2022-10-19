@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Fysio extends User{
 
     private final int LUNG_CAPACITY = 6;
-    public Fysio(int id, String name){
-        super(id, name, DepartmentName.Fysio);
+    public Fysio(int id, String name, String password){
+        super(id, name, password, DepartmentName.Fysio);
     }
 
     public void viewPatientData(Patient patient) {

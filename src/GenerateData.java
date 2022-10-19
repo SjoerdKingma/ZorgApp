@@ -6,12 +6,12 @@ public final class GenerateData {
 
     public static ArrayList<User> GenerateUsers(){
         ArrayList<User> result = new ArrayList<>();
-        result.add(new Fysio(0, "Miguel Angelo"));
-        result.add(new Fysio( 1, "Mart ElCamera"));
-        result.add(new Huisarts( 2, "Roger Federer"));
-        result.add(new Huisarts(3, "Tom Braaksma"));
-        result.add(new Tandarts( 4, "Rafael Nadal"));
-        result.add(new Tandarts( 5, "Timo Stoepen"));
+        result.add(new Fysio(0, "Miguel Angelo", "pietje"));
+        result.add(new Fysio( 1, "Mart ElCamera", "Pietje"));
+        result.add(new Huisarts( 2, "Roger Federer", "Pietje"));
+        result.add(new Huisarts(3, "Tom Braaksma", "Pietje"));
+        result.add(new Tandarts( 4, "Rafael Nadal", "Pietje"));
+        result.add(new Tandarts( 5, "Timo Stoepen", "Pietje"));
 
         return result;
     }

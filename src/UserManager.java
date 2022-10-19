@@ -39,11 +39,26 @@ public class UserManager {
         }
         catch(Exception ex){
             //System.out.println("Exception error! Message: " + ex);
-            System.out.println("Voer een geldig *nummer* in.");
+            System.out.println("Voer een geldig *nummer* in voor je gebruikers ID.");
+            menuChangeUser();
+            return;
+        }
+
+        User newUser = getUserFromUserId(userId);
+
+        System.out.println("Voer je wachtwoord in:");
+        Scanner scanner2 = new Scanner(System.in);
+        String passwordInput = scanner2.nextLine();
+
+        if(passwordInput.equals(newUser.getPassword())){
+            changeUser(userId);
+        }
+        else{
+            System.out.println("Het wachtwoord komt niet overeen. Probeer het opnieuw.");
             menuChangeUser();
         }
 
-        changeUser(userId);
+
     }
     private void changeUser(int userId){
         if (getUserFromUserId(userId) != null){ //If user exists

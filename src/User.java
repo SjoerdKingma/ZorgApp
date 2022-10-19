@@ -21,6 +21,7 @@ public abstract class User {
    private String userName;
    private int userID;
    private DepartmentName departmentName;
+   private String password;
 
    //Getters and Setters
    public String getUserName() {
@@ -35,11 +36,16 @@ public abstract class User {
       return this.departmentName;
    }
 
+   public String getPassword(){
+      return this.password;
+   }
+
    //Constructor
-   public User(int id, String name, DepartmentName departmentName) {
+   public User(int id, String name, String password, DepartmentName departmentName) {
       this.userID = id;
       this.userName = name;
       this.departmentName = departmentName;
+      this.password = password;
    }
 
    //Methods

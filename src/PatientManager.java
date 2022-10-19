@@ -18,7 +18,7 @@ public class PatientManager {
 
         for(int i=0; i<patients.size(); i++){
             Patient p = patients.get(i);
-            System.out.format("%d. %s %s\n", p.getPatientId(), p.getSurname(), p.getDateOfBirth());
+            System.out.format("%-3d %-20s %-16s Patient ID: %s\n", i, p.getSurname(), p.getDateOfBirth(), p.getPatientId());
         }
     }
 

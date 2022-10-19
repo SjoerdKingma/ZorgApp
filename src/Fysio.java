@@ -13,8 +13,8 @@ public class Fysio extends User{
         System.out.format( "%-17s %s\n", "FirstName:", patient.getFirstName() );
         System.out.format( "%-17s %s\n", "Age: ", patient.calcAge() );
         System.out.format( "%-17s %s\n", "Date of birth:", patient.getDateOfBirth());
-        System.out.format( "%-17s %s\n", "Weight: ", patient.getWeight() );
-        System.out.format( "%-17s %s\n", "Length: ", ConversionHelper.addTwoDecimals(patient.getLength()) );
+        System.out.format( "%-17s %s kg\n", "Weight: ", patient.getWeight() );
+        System.out.format( "%-17s %s m\n", "Length: ", ConversionHelper.addTwoDecimals(patient.getLength()) );
         System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(patient.calcBMI()) );
         System.out.format( "%-17s %s\n", "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()) );
 
@@ -84,8 +84,8 @@ public class Fysio extends User{
         System.out.format("%d: %-17s %s\n", SURNAME, "Surname:", patient.getSurname());
         System.out.format("%d: %-17s %s\n", FIRST_NAME, "FirstName:", patient.getFirstName());
         System.out.format("%d: %-17s %s\n", DATE_OF_BIRTH, "Date of birth:", patient.getDateOfBirth());
-        System.out.format("%d: %-17s %s\n", WEIGHT, "Weight: ", patient.getWeight());
-        System.out.format("%d: %-17s %s\n", LENGTH, "Length: ", ConversionHelper.addTwoDecimals(patient.getLength()));
+        System.out.format("%d: %-17s %s kg\n", WEIGHT, "Weight: ", patient.getWeight());
+        System.out.format("%d: %-17s %s m\n", LENGTH, "Length: ", ConversionHelper.addTwoDecimals(patient.getLength()));
         System.out.format("%d: %-17s %s\n", LUNG_CAPACITY, "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()));
     }
 }

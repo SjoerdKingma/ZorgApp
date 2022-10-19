@@ -73,8 +73,8 @@ public class Patient
       System.out.format( "%-17s %s\n", "FirstName:", firstName );
       System.out.format( "%-17s %s\n", "Age: ", calcAge() );
       System.out.format( "%-17s %s\n", "Date of birth:", dateOfBirth );
-      System.out.format( "%-17s %s\n", "Weight: ", getWeight() );
-      System.out.format( "%-17s %s\n", "Length: ", ConversionHelper.addTwoDecimals(length) );
+      System.out.format( "%-17s %s kg\n", "Weight: ", getWeight() );
+      System.out.format( "%-17s %s m\n", "Length: ", ConversionHelper.addTwoDecimals(length) );
       System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(calcBMI()) );
 
       System.out.println("\nList of medicines: ");

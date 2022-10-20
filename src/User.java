@@ -126,7 +126,7 @@ public abstract class User {
       System.out.println("\nLijst van medicijnen: ");
       prescriptions.forEach(prescription -> prescription.viewDataAsEditableList());
 
-      //Get user input
+      //Get user input for medicine selection
       Scanner scanner = new Scanner(System.in);
       System.out.println("Voer het ID in van de medicijn die u wilt aanpassen: ");
       int prescriptionId = scanner.nextInt();
@@ -140,9 +140,8 @@ public abstract class User {
       System.out.format("%d. Medicijn type: %s.\n", PRESCRIPTION_TYPE, prescription.medicine.type);
       System.out.format("%d. Medicijn dosering: %s\n", PRESCRIPTION_DOSE, prescription.dose);
 
+      //Get user input for medicine field selection
       System.out.println("Voer het nummer in van het veld dat u went aan te passen: ");
-
-      //Get user input
       Scanner scanner2 = new Scanner(System.in);
       int fieldChoice = scanner2.nextInt();
 

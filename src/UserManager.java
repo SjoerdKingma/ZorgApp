@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class UserManager {
 
+    private final boolean rememberUser = false;
+
     //Field: Users
     private ArrayList<User> users;
     public void setUsers(ArrayList<User> users) {
@@ -18,14 +20,20 @@ public class UserManager {
     public UserManager(ArrayList<User> userList){
         this.users = userList;
 
-        //Get current user
-        int currentUserId = SettingsHelper.GetCurrentUserId();
-        if(currentUserId == -1){ //UserId could not be found
-            menuChangeUser(); //Force the user to login
+        if(rememberUser){
+            //Automatically log in the last user
+            int currentUserId = SettingsHelper.GetCurrentUserId();
+            if(currentUserId == -1){ //UserId could not be found
+                menuChangeUser(); //Force the user to login
+            }
+            currentUser = getUserFromUserId(currentUserId);
+            if(currentUser == null){ //If there is no current user
+                menuChangeUser(); //Force the user to login
+            }
         }
-        currentUser = getUserFromUserId(currentUserId);
-        if(currentUser == null){ //If there is no current user
-            menuChangeUser(); //Force the user to login
+        else{
+            //Manually log in the user
+            menuChangeUser();
         }
     }
 

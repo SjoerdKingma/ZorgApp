@@ -16,7 +16,7 @@ public class Fysio extends User{
         System.out.format( "%-17s %s kg\n", "Gewicht: ", patient.getWeight() );
         System.out.format( "%-17s %s m\n", "Lengte: ", ConversionHelper.addTwoDecimals(patient.getLength()) );
         System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(patient.calcBMI()) );
-        System.out.format( "%-17s %s\n", "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()) );
+        System.out.format( "%-17s %s l\n", "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()) );
 
         System.out.println("\nLijst van medicijnen: ");
         patient.getPrescriptions().forEach(prescription -> prescription.viewDataAsList());

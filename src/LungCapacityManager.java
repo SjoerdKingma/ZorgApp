@@ -13,8 +13,9 @@ public class LungCapacityManager {
         for(LungCapacityPoint point : lungCapacityInfo.getData()){
             float maxCapacity = lungCapacityInfo.getMaxValue();
             int amountOfStars = (int)(MaxStars / maxCapacity * point.lungCapacity);
-            System.out.format("[%s] %s (%s)", point.date, "*".repeat(amountOfStars), ConversionHelper.addTwoDecimals(point.lungCapacity));
+            System.out.format("\n[%s] %s (%s)", point.date, "*".repeat(amountOfStars), ConversionHelper.addTwoDecimals(point.lungCapacity));
         }
+        System.out.println("");
     }
 
     public void addLungCapacityPoint(float value){

@@ -141,11 +141,11 @@ public final class GenerateData {
     private static LungCapacityInfo GenerateLungCapacityInfo(){
 
         ArrayList<LungCapacityPoint> points = new ArrayList<>(Arrays.asList(
-                new LungCapacityPoint(4.6f, LocalDate.of(2017, 3, 21)),
-                new LungCapacityPoint(4.3f, LocalDate.of(2018, 6, 3)),
-                new LungCapacityPoint(4.4f, LocalDate.of(2019, 2, 25)),
-                new LungCapacityPoint(4.2f, LocalDate.of(2020, 8, 14)),
-                new LungCapacityPoint(4.1f, LocalDate.of(2021, 4, 7))));
+                new LungCapacityPoint(5.8f, LocalDate.of(2017, 3, 21)),
+                new LungCapacityPoint(4.1f, LocalDate.of(2018, 6, 3)),
+                new LungCapacityPoint(5.6f, LocalDate.of(2019, 2, 25)),
+                new LungCapacityPoint(4.5f, LocalDate.of(2020, 8, 14)),
+                new LungCapacityPoint(5.2f, LocalDate.of(2021, 4, 7))));
 
 
         /*LungCapacityPoint p1 = new LungCapacityPoint(4.6f, LocalDate.of(2017, 3, 21));

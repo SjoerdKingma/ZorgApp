@@ -34,10 +34,11 @@ public class Administration
       while (nextCycle)
       {
          User currentUser = userManager.getCurrentUser();
+         Patient currentPatient = currentDepartment.patientManager.currentPatient;
 
          System.out.format( "\n%s\n\n", "=".repeat( 80 ) );
          System.out.format( "Huidige gebruiker: [%d] %s [%s]\n", currentUser.getUserID() , currentUser.getUserName(),currentUser.getDepartmentName().toString());
-         System.out.format( "Huidige patiënt: [%d] %s\n", currentDepartment.patientManager.currentPatient.getPatientId(), currentDepartment.patientManager.currentPatient.fullName() );
+         System.out.format( "Huidige patiënt: [%d] %s [%s]\n", currentPatient.getPatientId(), currentPatient.fullName(), currentPatient.getDateOfBirthWithFormat() );
 
          // Print menu on screen
          System.out.format( "%d:  STOP\n", STOP );

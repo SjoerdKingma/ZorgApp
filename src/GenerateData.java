@@ -1,12 +1,15 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public final class GenerateData {
+
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     private GenerateData(){}
 
     public static ArrayList<User> GenerateUsers(){
         ArrayList<User> result = new ArrayList<>();
-        result.add(new Fysio(0, "Miguel Angelo", "pietje"));
+        result.add(new Fysio(0, "Miguel Angelo", "Pietje"));
         result.add(new Fysio( 1, "Mart ElCamera", "Pietje"));
         result.add(new Huisarts( 2, "Roger Federer", "Pietje"));
         result.add(new Huisarts(3, "Tom Braaksma", "Pietje"));
@@ -55,37 +58,44 @@ public final class GenerateData {
         Patient p1 = new Patient(
                 1, "Van Puffelen", "Pierre",
                 LocalDate.of( 2000, 2, 29 ),
-                75, 1.80f, prescriptions
+                75, 1.80f, prescriptions,
+                dateTimeFormatter
                 );
 
         Patient p2 = new Patient(2, "Veen", "Halbe",
                   LocalDate.of(1972, 3, 24),
-                    105, 1.94f, prescriptions
+                    105, 1.94f, prescriptions,
+                dateTimeFormatter
                 );
 
         Patient p3 = new Patient(3, "Poppinga", "Kees",
                 LocalDate.of(1954, 6, 23),
-                75, 1.67f, prescriptions
+                75, 1.67f, prescriptions,
+                dateTimeFormatter
         );
 
         Patient p4 = new Patient(4, "Boukema", "Atje",
                 LocalDate.of(1972, 3, 24),
-                105, 1.94f, prescriptions
+                105, 1.94f, prescriptions,
+                dateTimeFormatter
         );
 
         Patient p5 = new Patient(5, "Postma", "Piebe",
                 LocalDate.of(2002, 8, 2),
-                107, 1.68f, prescriptions
+                107, 1.68f, prescriptions,
+                dateTimeFormatter
         );
 
         Patient p6 = new Patient(6, "Visser", "Tjitske",
                 LocalDate.of(1983, 2, 12),
-                80, 1.89f, prescriptions
+                80, 1.89f, prescriptions,
+                dateTimeFormatter
         );
 
         Patient p7 = new Patient(7, "Hoekstra", "Piebe",
                 LocalDate.of(2003, 2, 24),
-                95, 2.03f, prescriptions
+                95, 2.03f, prescriptions,
+                dateTimeFormatter
         );
 
         result.add((p1));

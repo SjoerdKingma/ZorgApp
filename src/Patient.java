@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 
 public class Patient
 {
@@ -14,6 +15,8 @@ public class Patient
    private float lungCapacity;
 
    private ArrayList<Prescription> prescriptions;
+
+   private DateTimeFormatter dateTimeFormatter;
 
    public int getPatientId(){return id;}
    public String getSurname()
@@ -41,6 +44,8 @@ public class Patient
 
    public LocalDate getDateOfBirth(){return this.dateOfBirth;}
 
+   public String getDateOfBirthWithFormat(){return this.dateOfBirth.format(this.dateTimeFormatter);}
+
    public void setDateOfBirth(LocalDate dateOfBirth){this.dateOfBirth = dateOfBirth;}
 
    public ArrayList<Prescription> getPrescriptions(){
@@ -55,7 +60,11 @@ public class Patient
       this.lungCapacity = lungCapacity;
    }
 
-   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions)
+   public DateTimeFormatter getDateTimeFormatter(){
+      return this.dateTimeFormatter;
+   }
+
+   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions, DateTimeFormatter dateTimeFormatter)
    {
       this.id = id;
       this.surname = surname;
@@ -64,6 +73,7 @@ public class Patient
       this.weight = weight;
       this.length = length;
       this.prescriptions = prescriptions;
+      this.dateTimeFormatter = dateTimeFormatter;
    }
    // View patient data.
    public void viewData()
@@ -72,7 +82,7 @@ public class Patient
       System.out.format( "%-17s %s\n", "Achternaam:", surname );
       System.out.format( "%-17s %s\n", "Voornaam:", firstName );
       System.out.format( "%-17s %s\n", "Leeftijd: ", calcAge() );
-      System.out.format( "%-17s %s\n", "Geboortedatum:", dateOfBirth );
+      System.out.format( "%-17s %s\n", "Geboortedatum:", getDateOfBirthWithFormat() );
       System.out.format( "%-17s %s kg\n", "Gewicht: ", getWeight() );
       System.out.format( "%-17s %s m\n", "Lengte: ", ConversionHelper.addTwoDecimals(length) );
       System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(calcBMI()) );
@@ -84,7 +94,7 @@ public class Patient
    // Shorthand for a Patient's full name
    public String fullName()
    {
-      return String.format( "%s %s [%s]", firstName, surname, dateOfBirth.toString() );
+      return String.format( "%s %s", firstName, surname);
    }
 
    //Calculates the Patient's age

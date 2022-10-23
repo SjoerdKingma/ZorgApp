@@ -12,7 +12,7 @@ public class Fysio extends User{
         System.out.format( "%-17s %s\n", "Achternaam:", patient.getSurname() );
         System.out.format( "%-17s %s\n", "Voornaam:", patient.getFirstName() );
         System.out.format( "%-17s %s\n", "Leeftijd: ", patient.calcAge() );
-        System.out.format( "%-17s %s\n", "Geboortedatum:", patient.getDateOfBirth());
+        System.out.format( "%-17s %s\n", "Geboortedatum:", patient.getDateOfBirthWithFormat());
         System.out.format( "%-17s %s kg\n", "Gewicht: ", patient.getWeight() );
         System.out.format( "%-17s %s m\n", "Lengte: ", ConversionHelper.addTwoDecimals(patient.getLength()) );
         System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(patient.calcBMI()) );

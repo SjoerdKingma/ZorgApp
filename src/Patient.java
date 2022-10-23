@@ -12,7 +12,7 @@ public class Patient
    private int weight;
    private float length;
 
-   private float lungCapacity;
+   private LungCapacityManager lungCapacityManager;
 
    private ArrayList<Prescription> prescriptions;
 
@@ -52,19 +52,19 @@ public class Patient
       return this.prescriptions;
    }
 
-   public float getLungCapacity(){
-      return this.lungCapacity;
+   public LungCapacityManager getLungCapacityManager(){
+      return this.lungCapacityManager;
    }
 
-   public void  setLungCapacity(float lungCapacity){
+   /*public void  setLungCapacity(LungCapacityInfo lungCapacity){
       this.lungCapacity = lungCapacity;
-   }
+   }*/
 
    public DateTimeFormatter getDateTimeFormatter(){
       return this.dateTimeFormatter;
    }
 
-   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions, DateTimeFormatter dateTimeFormatter)
+   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions, DateTimeFormatter dateTimeFormatter, LungCapacityInfo lungCapacityInfo)
    {
       this.id = id;
       this.surname = surname;
@@ -74,6 +74,7 @@ public class Patient
       this.length = length;
       this.prescriptions = prescriptions;
       this.dateTimeFormatter = dateTimeFormatter;
+      this.lungCapacityManager = new LungCapacityManager(lungCapacityInfo);
    }
    // View patient data.
    public void viewData()

@@ -16,7 +16,9 @@ public class Fysio extends User{
         System.out.format( "%-17s %s kg\n", "Gewicht: ", patient.getWeight() );
         System.out.format( "%-17s %s m\n", "Lengte: ", ConversionHelper.addTwoDecimals(patient.getLength()) );
         System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(patient.calcBMI()) );
-        System.out.format( "%-17s %s l\n", "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()) );
+        //System.out.format( "%-17s %s l\n", "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()) );
+        System.out.println("\nLonginhoud: ");
+        patient.getLungCapacityManager().printStarGraph();
 
         System.out.println("\nLijst van medicijnen: ");
         patient.getPrescriptions().forEach(prescription -> prescription.viewDataAsList());
@@ -71,10 +73,11 @@ public class Fysio extends User{
                 System.out.format("Lengte veranderd naar: %s", input);
                 break;
             case LUNG_CAPACITY:
-                System.out.println("Voer de nieuwe waarde in voor longcapaciteit:");
+                System.out.println("Voer de waarde in voor de nieuwe longcapaciteit van vandaag:");
                 input = scanner.nextLine();
-                patient.setLungCapacity(Float.parseFloat(input));
-                System.out.format("Longcapaciteit veranderd naar: %s", input);
+                //patient.setLungCapacity(Float.parseFloat(input));
+                patient.getLungCapacityManager().addLungCapacityPoint(Float.parseFloat(input));
+                System.out.format("Longcapaciteit met waarde %s is toegevoegd.", input);
 
         }
     }
@@ -86,6 +89,7 @@ public class Fysio extends User{
         System.out.format("%d: %-17s %s\n", DATE_OF_BIRTH, "Geboortedatum:", patient.getDateOfBirth());
         System.out.format("%d: %-17s %s kg\n", WEIGHT, "Gewicht: ", patient.getWeight());
         System.out.format("%d: %-17s %s m\n", LENGTH, "Lengte: ", ConversionHelper.addTwoDecimals(patient.getLength()));
-        System.out.format("%d: %-17s %s\n", LUNG_CAPACITY, "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()));
+        /*System.out.format("%d: %-17s %s\n", LUNG_CAPACITY, "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()));*/
+        System.out.format("%d: %-17s\n", LUNG_CAPACITY, "Longinhoud punt toevoegen aan grafiek.");
     }
 }

@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public final class GenerateData {
 
@@ -54,48 +55,49 @@ public final class GenerateData {
         ArrayList<Patient> result = new ArrayList<>();
 
         ArrayList<Prescription> prescriptions = GeneratePrescriptions();
+        LungCapacityInfo lungCapacity = GenerateLungCapacityInfo();
 
         Patient p1 = new Patient(
                 1, "Van Puffelen", "Pierre",
                 LocalDate.of( 2000, 2, 29 ),
                 75, 1.80f, prescriptions,
-                dateTimeFormatter
+                dateTimeFormatter, lungCapacity
                 );
 
         Patient p2 = new Patient(2, "Veen", "Halbe",
                   LocalDate.of(1972, 3, 24),
                     105, 1.94f, prescriptions,
-                dateTimeFormatter
+                dateTimeFormatter, lungCapacity
                 );
 
         Patient p3 = new Patient(3, "Poppinga", "Kees",
                 LocalDate.of(1954, 6, 23),
                 75, 1.67f, prescriptions,
-                dateTimeFormatter
+                dateTimeFormatter, lungCapacity
         );
 
         Patient p4 = new Patient(4, "Boukema", "Atje",
                 LocalDate.of(1972, 3, 24),
                 105, 1.94f, prescriptions,
-                dateTimeFormatter
+                dateTimeFormatter, lungCapacity
         );
 
         Patient p5 = new Patient(5, "Postma", "Piebe",
                 LocalDate.of(2002, 8, 2),
                 107, 1.68f, prescriptions,
-                dateTimeFormatter
+                dateTimeFormatter, lungCapacity
         );
 
         Patient p6 = new Patient(6, "Visser", "Tjitske",
                 LocalDate.of(1983, 2, 12),
                 80, 1.89f, prescriptions,
-                dateTimeFormatter
+                dateTimeFormatter, lungCapacity
         );
 
         Patient p7 = new Patient(7, "Hoekstra", "Piebe",
                 LocalDate.of(2003, 2, 24),
                 95, 2.03f, prescriptions,
-                dateTimeFormatter
+                dateTimeFormatter, lungCapacity
         );
 
         result.add((p1));
@@ -133,6 +135,26 @@ public final class GenerateData {
         result.add(new Medicine(2, "Amoxil", MedicineType.Pijnstiller));
         result.add(new Medicine(3, "Cipro", MedicineType.Antibiotica));
         result.add(new Medicine(4, "Zithromax", MedicineType.Antibiotica));
+        return result;
+    }
+
+    private static LungCapacityInfo GenerateLungCapacityInfo(){
+
+        ArrayList<LungCapacityPoint> points = new ArrayList<>(Arrays.asList(
+                new LungCapacityPoint(4.6f, LocalDate.of(2017, 3, 21)),
+                new LungCapacityPoint(4.3f, LocalDate.of(2018, 6, 3)),
+                new LungCapacityPoint(4.4f, LocalDate.of(2019, 2, 25)),
+                new LungCapacityPoint(4.2f, LocalDate.of(2020, 8, 14)),
+                new LungCapacityPoint(4.1f, LocalDate.of(2021, 4, 7))));
+
+
+        /*LungCapacityPoint p1 = new LungCapacityPoint(4.6f, LocalDate.of(2017, 3, 21));
+        LungCapacityPoint p2 = new LungCapacityPoint(4.3f, LocalDate.of(2018, 6, 3));
+        LungCapacityPoint p3 = new LungCapacityPoint(4.4f, LocalDate.of(2019, 2, 25));
+        LungCapacityPoint p4 = new LungCapacityPoint(4.2f, LocalDate.of(2020, 8, 14));
+        LungCapacityPoint p5 = new LungCapacityPoint(4.1f, LocalDate.of(2021, 4, 7));*/
+
+        LungCapacityInfo result = new LungCapacityInfo(points);
         return result;
     }
 }

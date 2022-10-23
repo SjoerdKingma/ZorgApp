@@ -4,7 +4,13 @@ public class LungCapacityPoint {
     public LocalDate date;
     public float lungCapacity;
 
-    public void printAsStarGraph() {
-        System.out.format("[%s] *** (4.65)");
+    public LungCapacityPoint(float lungCapacity) {
+        this.lungCapacity = lungCapacity;
+        this.date = LocalDate.now();
+    }
+
+    public LungCapacityPoint(float lungCapacity, LocalDate date) {
+        this.lungCapacity = lungCapacity;
+        this.date = date;
     }
 }

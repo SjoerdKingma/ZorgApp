@@ -9,11 +9,16 @@ public class LungCapacityManager {
         this.lungCapacityInfo = lungCapacityInfo;
     }
 
-    public void printStarGraph(LungCapacityInfo lungCapacityInfo){
-        for(LungCapacityPoint point : lungCapacityInfo.data){
+    public void printStarGraph(){
+        for(LungCapacityPoint point : lungCapacityInfo.getData()){
             float maxCapacity = lungCapacityInfo.getMaxValue();
             int amountOfStars = (int)(MaxStars / maxCapacity * point.lungCapacity);
             System.out.format("[%s] %s (%s)", point.date, "*".repeat(amountOfStars), ConversionHelper.addTwoDecimals(point.lungCapacity));
         }
+    }
+
+    public void addLungCapacityPoint(float value){
+        LungCapacityPoint newPoint = new LungCapacityPoint(value);
+        this.lungCapacityInfo.addData(newPoint);
     }
 }

@@ -114,13 +114,13 @@ public final class GenerateData {
 
         ArrayList<Medicine> medicines = GenerateMedicines();
 
-        Prescription pres1 = new Prescription(0, "1 Per 2 dagen.", medicines.get(0));
+        Prescription pres1 = new Prescription(0, "1 per 2 dagen", medicines.get(0));
         result.add(pres1);
 
-        Prescription pres2 = new Prescription(1, "3 Per dag.", medicines.get(1));
+        Prescription pres2 = new Prescription(1, "3 per dag", medicines.get(1));
         result.add(pres2);
 
-        Prescription pres3 = new Prescription(2, "1 Per week.", medicines.get(2));
+        Prescription pres3 = new Prescription(2, "1 per week", medicines.get(2));
         result.add(pres3);
 
         return result;

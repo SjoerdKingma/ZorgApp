@@ -11,7 +11,7 @@ public class Tandarts extends User{
     }
 
     public void viewPatientData(Patient patient){
-        System.out.format( "===== Patient id=%d ==============================\n", patient.getPatientId());
+        System.out.format( "\n===== Patient id=%d ==============================\n", patient.getPatientId());
         System.out.format( "%-17s %s\n", "Achternaam:", patient.getSurname() );
         System.out.format( "%-17s %s\n", "Voornaam:", patient.getFirstName() );
         System.out.format( "%-17s %s\n", "Leeftijd: ", patient.calcAge() );

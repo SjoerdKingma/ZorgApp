@@ -47,7 +47,7 @@ public class Administration
          System.out.format( "%d:  Verander van patiënt\n", CHANGE_PATIENT );
          System.out.format( "%d:  Afmelden\n", CHANGE_USER );
 
-         System.out.print( "enter #choice: " );
+         System.out.print( "Uw keuze: " );
 
          nextCycle = handleInput(); //Handle Input via this method
       }

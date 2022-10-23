@@ -69,15 +69,15 @@ public class Patient
    public void viewData()
    {
       System.out.format( "===== Patiënt id=%d ==============================\n", id );
-      System.out.format( "%-17s %s\n", "Surname:", surname );
-      System.out.format( "%-17s %s\n", "FirstName:", firstName );
-      System.out.format( "%-17s %s\n", "Age: ", calcAge() );
-      System.out.format( "%-17s %s\n", "Date of birth:", dateOfBirth );
-      System.out.format( "%-17s %s kg\n", "Weight: ", getWeight() );
-      System.out.format( "%-17s %s m\n", "Length: ", ConversionHelper.addTwoDecimals(length) );
+      System.out.format( "%-17s %s\n", "Achternaam:", surname );
+      System.out.format( "%-17s %s\n", "Voornaam:", firstName );
+      System.out.format( "%-17s %s\n", "Leeftijd: ", calcAge() );
+      System.out.format( "%-17s %s\n", "Geboortedatum:", dateOfBirth );
+      System.out.format( "%-17s %s kg\n", "Gewicht: ", getWeight() );
+      System.out.format( "%-17s %s m\n", "Lengte: ", ConversionHelper.addTwoDecimals(length) );
       System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(calcBMI()) );
 
-      System.out.println("\nList of medicines: ");
+      System.out.println("\nMedicijnen lijst: ");
       this.prescriptions.forEach(prescription -> prescription.viewDataAsList());
    }
 

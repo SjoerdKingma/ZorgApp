@@ -101,7 +101,6 @@ public class PatientManager {
     }
 
     public void sortPatients(SortableFields field){
-        //Collections.sort(this.patients);
         Comparator<Patient> comparator = null;
 
         switch(field){
@@ -113,10 +112,9 @@ public class PatientManager {
             case DateOfBirth:
                 comparator = Comparator.comparing(Patient::getDateOfBirth);
                 break;
-
         }
 
-        List<Patient> sortedList = this.patients.stream().sorted(comparator).collect(Collectors.toList());
+        List<Patient> sortedList = this.patients.stream().sorted(comparator).toList();
         this.patients = new ArrayList<>();
         this.patients.addAll(sortedList);
     }

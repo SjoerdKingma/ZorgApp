@@ -2,8 +2,9 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 
-public class Patient
+public class Patient implements Comparable<Patient>
 {
    private int       id;
    private String    surname;
@@ -107,5 +108,14 @@ public class Patient
 
    public float calcBMI(){
       return weight / (length * length);
+   }
+
+   @Override
+   public int compareTo(Patient p){
+      if(this.getSurname() == "" || p.getSurname() == ""){
+         return 0;
+      }
+
+      return this.getSurname().compareTo(p.getSurname());
    }
 }

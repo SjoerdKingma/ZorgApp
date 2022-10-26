@@ -73,7 +73,7 @@ public class Administration
 
          case VIEW_ALL_PATIENTS:
             System.out.println("");
-            currentDepartment.patientManager.viewAllPatients();
+            currentDepartment.patientManager.menuPatientList();
             break;
 
          case VIEW_CURRENT_PATIENT:

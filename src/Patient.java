@@ -12,6 +12,7 @@ public class Patient implements Comparable<Patient>
    private LocalDate dateOfBirth;
    private int weight;
    private float length;
+   private ArrayList<Consult> consults;
 
    private LungCapacityManager lungCapacityManager;
 
@@ -65,7 +66,11 @@ public class Patient implements Comparable<Patient>
       return this.dateTimeFormatter;
    }
 
-   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions, DateTimeFormatter dateTimeFormatter, LungCapacityInfo lungCapacityInfo)
+   public ArrayList<Consult> getConsults(){
+      return this.consults;
+   }
+
+   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions, DateTimeFormatter dateTimeFormatter, LungCapacityInfo lungCapacityInfo, ArrayList<Consult> consults)
    {
       this.id = id;
       this.surname = surname;
@@ -76,6 +81,7 @@ public class Patient implements Comparable<Patient>
       this.prescriptions = prescriptions;
       this.dateTimeFormatter = dateTimeFormatter;
       this.lungCapacityManager = new LungCapacityManager(lungCapacityInfo);
+      this.consults = consults;
    }
    // View patient data.
    public void viewData()

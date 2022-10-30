@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 
-public class Patient implements Comparable<Patient>
+public class Patient
 {
    private int       id;
    private String    surname;
@@ -116,12 +116,12 @@ public class Patient implements Comparable<Patient>
       return weight / (length * length);
    }
 
-   @Override
-   public int compareTo(Patient p){
+//   @Override
+   /*public int compareTo(Patient p){
       if(this.getSurname() == "" || p.getSurname() == ""){
          return 0;
       }
 
       return this.getSurname().compareTo(p.getSurname());
-   }
+   }*/
 }

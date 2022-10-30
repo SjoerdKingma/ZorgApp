@@ -1,4 +1,7 @@
+import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,48 +59,49 @@ public final class GenerateData {
 
         ArrayList<Prescription> prescriptions = GeneratePrescriptions();
         LungCapacityInfo lungCapacity = GenerateLungCapacityInfo();
+        ArrayList<Consult> consults = GenerateConsults();
 
         Patient p1 = new Patient(
                 1, "Van Puffelen", "Pierre",
                 LocalDate.of( 2000, 2, 29 ),
                 75, 1.80f, prescriptions,
-                dateTimeFormatter, lungCapacity
+                dateTimeFormatter, lungCapacity, consults
                 );
 
         Patient p2 = new Patient(2, "Veen", "Halbe",
                   LocalDate.of(1972, 3, 24),
                     105, 1.94f, prescriptions,
-                dateTimeFormatter, lungCapacity
+                dateTimeFormatter, lungCapacity, consults
                 );
 
         Patient p3 = new Patient(3, "Poppinga", "Kees",
                 LocalDate.of(1954, 6, 23),
                 75, 1.67f, prescriptions,
-                dateTimeFormatter, lungCapacity
+                dateTimeFormatter, lungCapacity, consults
         );
 
         Patient p4 = new Patient(4, "Boukema", "Atje",
                 LocalDate.of(1972, 3, 24),
                 105, 1.94f, prescriptions,
-                dateTimeFormatter, lungCapacity
+                dateTimeFormatter, lungCapacity, consults
         );
 
         Patient p5 = new Patient(5, "Postma", "Piebe",
                 LocalDate.of(2002, 8, 2),
                 107, 1.68f, prescriptions,
-                dateTimeFormatter, lungCapacity
+                dateTimeFormatter, lungCapacity, consults
         );
 
         Patient p6 = new Patient(6, "Visser", "Tjitske",
                 LocalDate.of(1983, 2, 12),
                 80, 1.89f, prescriptions,
-                dateTimeFormatter, lungCapacity
+                dateTimeFormatter, lungCapacity, consults
         );
 
         Patient p7 = new Patient(7, "Hoekstra", "Piebe",
                 LocalDate.of(2003, 2, 24),
                 95, 2.03f, prescriptions,
-                dateTimeFormatter, lungCapacity
+                dateTimeFormatter, lungCapacity, consults
         );
 
         result.add((p1));
@@ -156,5 +160,56 @@ public final class GenerateData {
 
         LungCapacityInfo result = new LungCapacityInfo(points);
         return result;
+    }
+
+    private static ArrayList<Consult> GenerateConsults() {
+        SetConsultPrices();
+
+        ArrayList<Consult> result = new ArrayList<>();
+
+        LocalDateTime cDate = LocalDateTime.of(2015, Month.APRIL, 20, 10, 30);
+        FysioConsult c1 = new FysioConsult(cDate);
+        result.add(c1);
+
+        cDate = LocalDateTime.of(2016, Month.FEBRUARY, 5, 16, 30);
+        TandartsConsult c2 = new TandartsConsult(cDate);
+        result.add(c2);
+
+        cDate = LocalDateTime.of(2017, Month.DECEMBER, 23, 14, 0);
+        TandartsConsult c3 = new TandartsConsult(cDate);
+        result.add(c3);
+
+        return result;
+    }
+
+    private static void SetConsultPrices(){
+        FysioConsult.prices = GenerateFysioPrices();
+        TandartsConsult.prices = GenerateTandartsPrices();
+        HuisartsConsult.prices = GenerateHuisartsPrices();
+    }
+
+    private static ArrayList<ConsultPrice> GenerateTandartsPrices(){
+        ArrayList<ConsultPrice> tandartsPrices = new ArrayList<>();
+        tandartsPrices.add(new ConsultPrice("Default", 20f));
+        tandartsPrices.add(new ConsultPrice("Simple", 30f));
+        tandartsPrices.add(new ConsultPrice("Complex", 55f));
+        return tandartsPrices;
+    }
+
+    private static ArrayList<ConsultPrice> GenerateFysioPrices(){
+        ArrayList<ConsultPrice> fysioPrices = new ArrayList<>();
+        fysioPrices.add(new ConsultPrice("Default", 17.5f));
+        fysioPrices.add(new ConsultPrice("Short", 22.5f));
+        fysioPrices.add(new ConsultPrice("Extended", 45f));
+        fysioPrices.add(new ConsultPrice("Facilities", 5f));
+        return fysioPrices;
+    }
+
+    private static ArrayList<ConsultPrice> GenerateHuisartsPrices(){
+        ArrayList<ConsultPrice> huisartsPrices = new ArrayList<>();
+        huisartsPrices.add(new ConsultPrice("Default", 17.5f));
+        huisartsPrices.add(new ConsultPrice("Simple", 30f));
+        huisartsPrices.add(new ConsultPrice("Complex", 55f));
+        return huisartsPrices;
     }
 }

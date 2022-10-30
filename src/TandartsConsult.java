@@ -1,7 +1,7 @@
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class TandartsConsult extends Consult{
-    public TandartsConsult(LocalDate date){
+    public TandartsConsult(LocalDateTime date){
         super(ConsultVariant.Tandarts, date);
     }
 }

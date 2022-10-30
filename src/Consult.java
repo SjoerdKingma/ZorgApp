@@ -13,6 +13,6 @@ public abstract class Consult {
         this.consultType = consultType;
     }
     public void viewData(){
-        System.out.format("%-17s - %-8s (%s)\n", this.date.format(ZorgApp.dateTimeFormatter), this.consultType.getName().toUpperCase(), this.consultVariant.toString());
+        System.out.format("%-16s - %-8s (%s)\n", this.date.format(ZorgApp.dateTimeFormatter), this.consultType.getName().toUpperCase(), this.consultVariant.toString());
     }
 }

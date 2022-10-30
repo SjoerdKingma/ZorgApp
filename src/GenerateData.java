@@ -181,7 +181,7 @@ public final class GenerateData {
         result.add(c6);
 
         cDate = LocalDateTime.of(2019, Month.MAY, 25, 10, 15);
-        HuisartsConsult c7 = new HuisartsConsult(cDate, HuisartsConsult.prices.get(2));
+        HuisartsConsult c7 = new HuisartsConsult(cDate, HuisartsConsult.prices.get(1));
         result.add(c7);
 
         return result;
@@ -213,8 +213,7 @@ public final class GenerateData {
     private static ArrayList<ConsultType> GenerateHuisartsPrices(){
         ArrayList<ConsultType> huisartsPrices = new ArrayList<>();
         huisartsPrices.add(new ConsultType("Default", 17.5f));
-        huisartsPrices.add(new ConsultType("Simple", 30f));
-        huisartsPrices.add(new ConsultType("Complex", 55f));
+        huisartsPrices.add(new ConsultType("Extended", 43));
         return huisartsPrices;
     }
 }

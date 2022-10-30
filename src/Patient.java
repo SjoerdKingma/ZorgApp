@@ -70,7 +70,7 @@ public class Patient
       return this.consults;
    }
 
-   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions, DateTimeFormatter dateTimeFormatter, LungCapacityInfo lungCapacityInfo, ArrayList<Consult> consults)
+   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions, LungCapacityInfo lungCapacityInfo, ArrayList<Consult> consults)
    {
       this.id = id;
       this.surname = surname;
@@ -79,7 +79,7 @@ public class Patient
       this.weight = weight;
       this.length = length;
       this.prescriptions = prescriptions;
-      this.dateTimeFormatter = dateTimeFormatter;
+      this.dateTimeFormatter = ZorgApp.dateFormatter;
       this.lungCapacityManager = new LungCapacityManager(lungCapacityInfo);
       this.consults = consults;
    }
@@ -97,6 +97,9 @@ public class Patient
 
       System.out.println("\nMedicijnen lijst: ");
       this.prescriptions.forEach(prescription -> prescription.viewDataAsList());
+
+      System.out.println("Afspraken geschiedenis: ");
+      this.consults.forEach(consult -> consult.viewData());
    }
 
    // Shorthand for a Patient's full name
@@ -115,13 +118,4 @@ public class Patient
    public float calcBMI(){
       return weight / (length * length);
    }
-
-//   @Override
-   /*public int compareTo(Patient p){
-      if(this.getSurname() == "" || p.getSurname() == ""){
-         return 0;
-      }
-
-      return this.getSurname().compareTo(p.getSurname());
-   }*/
 }

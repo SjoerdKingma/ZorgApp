@@ -1,7 +1,9 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class TandartsConsult extends Consult{
-    public TandartsConsult(LocalDateTime date){
-        super(ConsultVariant.Tandarts, date);
+    public static ArrayList<ConsultType> prices;
+    public TandartsConsult(LocalDateTime date, ConsultType price){
+        super(DepartmentName.Tandarts, date, price);
     }
 }

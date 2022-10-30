@@ -22,6 +22,9 @@ public class Fysio extends User{
 
         System.out.println("\nLijst van medicijnen: ");
         patient.getPrescriptions().forEach(prescription -> prescription.viewDataAsList());
+
+        System.out.println("Afspraken geschiedenis: ");
+        patient.getConsults().forEach(consult -> consult.viewData());
     }
 
     public void menuEditPatient(Patient patient) {

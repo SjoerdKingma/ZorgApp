@@ -19,6 +19,9 @@ public class Tandarts extends User{
 
         System.out.format("\nPatiënt medicijnen:\n\n");
         patient.getPrescriptions().forEach( prescription -> prescription.viewDataAsList());
+
+        System.out.println("Afspraken geschiedenis: ");
+        patient.getConsults().forEach(consult -> consult.viewData());
     }
 
     public void menuEditPatient(Patient patient) {

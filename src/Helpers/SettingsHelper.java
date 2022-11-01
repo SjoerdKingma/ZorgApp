@@ -1,3 +1,5 @@
+package Helpers;
+
 import java.io.*;
 
 public final class SettingsHelper {

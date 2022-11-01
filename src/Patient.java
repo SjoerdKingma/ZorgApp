@@ -1,8 +1,12 @@
+import Consult.Consult;
+import Helpers.ConversionHelper;
+import LungCapacity.LungCapacityInfo;
+import LungCapacity.LungCapacityManager;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 
 public class Patient
 {
@@ -58,7 +62,7 @@ public class Patient
       return this.lungCapacityManager;
    }
 
-   /*public void  setLungCapacity(LungCapacityInfo lungCapacity){
+   /*public void  setLungCapacity(LungCapacity.LungCapacityInfo lungCapacity){
       this.lungCapacity = lungCapacity;
    }*/
 
@@ -70,7 +74,7 @@ public class Patient
       return this.consults;
    }
 
-   Patient( int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions, LungCapacityInfo lungCapacityInfo, ArrayList<Consult> consults)
+   Patient(int id, String surname, String firstName, LocalDate dateOfBirth, int weight, float length, ArrayList<Prescription> prescriptions, LungCapacityInfo lungCapacityInfo, ArrayList<Consult> consults)
    {
       this.id = id;
       this.surname = surname;

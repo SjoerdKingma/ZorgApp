@@ -1,5 +1,6 @@
+package Consult;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public abstract class Consult {
     private DepartmentName consultVariant;

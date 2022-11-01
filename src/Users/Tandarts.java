@@ -1,3 +1,5 @@
+package Users;
+
 import java.util.Scanner;
 
 public class Tandarts extends User{

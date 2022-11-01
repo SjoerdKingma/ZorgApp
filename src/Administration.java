@@ -1,3 +1,6 @@
+import Users.User;
+import Users.UserManager;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -5,7 +8,7 @@ import java.util.Scanner;
 // the main menu, from where all other functionality is accessible, either
 // directly or via sub-menus.
 //
-// An Adminiatration instance needs a User as input, which is passed via the
+// An Adminiatration instance needs a Users.User as input, which is passed via the
 // constructor to the data member 'çurrentUser'.
 // The patient data is available via the data member çurrentPatient.
 public class Administration
@@ -97,7 +100,7 @@ public class Administration
    }
 
    private int validateInput() {
-      //Validate User Input
+      //Validate Users.User Input
       Scanner scanner = new Scanner(System.in);
       int choice = 0;
 

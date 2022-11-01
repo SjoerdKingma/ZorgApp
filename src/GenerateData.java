@@ -1,3 +1,12 @@
+import Consult.Consult;
+import Consult.ConsultType;
+import LungCapacity.LungCapacityInfo;
+import LungCapacity.LungCapacityPoint;
+import Users.Fysio;
+import Users.Huisarts;
+import Users.Tandarts;
+import Users.User;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;

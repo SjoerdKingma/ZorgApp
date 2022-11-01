@@ -1,3 +1,5 @@
+package LungCapacity;
+
 import java.time.LocalDate;
 
 public class LungCapacityPoint {

@@ -1,3 +1,5 @@
+package Consult;
+
 public class ConsultType {
     private String name;
     private float price;

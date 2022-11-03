@@ -11,7 +11,7 @@ public class LungCapacityManager {
 
     public void printStarGraph(){
         for(LungCapacityPoint point : lungCapacityInfo.getData()){
-            float maxCapacity = lungCapacityInfo.getMaxValue();
+            float maxCapacity = lungCapacityInfo.getMaxValue();//TODO: Boven de for-loop zetten want dit hoeft maar één keer berekend te worden.
             int amountOfStars = (int)(MaxStars / maxCapacity * point.lungCapacity);
             System.out.format("\n[%s] %-10s (%s)", point.date, "*".repeat(amountOfStars), ConversionHelper.addTwoDecimals(point.lungCapacity));
         }

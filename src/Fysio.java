@@ -1,3 +1,5 @@
+import Helpers.ConversionHelper;
+
 import java.util.Scanner;
 
 public class Fysio extends User{
@@ -16,7 +18,7 @@ public class Fysio extends User{
         System.out.format( "%-17s %s kg\n", "Gewicht: ", patient.getWeight() );
         System.out.format( "%-17s %s m\n", "Lengte: ", ConversionHelper.addTwoDecimals(patient.getLength()) );
         System.out.format( "%-17s %s\n", "BMI: ", ConversionHelper.addTwoDecimals(patient.calcBMI()) );
-        //System.out.format( "%-17s %s l\n", "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()) );
+        //System.out.format( "%-17s %s l\n", "Longinhoud: ", Helpers.ConversionHelper.addTwoDecimals(patient.getLungCapacity()) );
         System.out.println("\nLonginhoud: ");
         patient.getLungCapacityManager().printStarGraph();
 
@@ -92,7 +94,7 @@ public class Fysio extends User{
         System.out.format("%d: %-17s %s\n", DATE_OF_BIRTH, "Geboortedatum:", patient.getDateOfBirth());
         System.out.format("%d: %-17s %s kg\n", WEIGHT, "Gewicht: ", patient.getWeight());
         System.out.format("%d: %-17s %s m\n", LENGTH, "Lengte: ", ConversionHelper.addTwoDecimals(patient.getLength()));
-        /*System.out.format("%d: %-17s %s\n", LUNG_CAPACITY, "Longinhoud: ", ConversionHelper.addTwoDecimals(patient.getLungCapacity()));*/
+        /*System.out.format("%d: %-17s %s\n", LUNG_CAPACITY, "Longinhoud: ", Helpers.ConversionHelper.addTwoDecimals(patient.getLungCapacity()));*/
         System.out.format("%d: %-17s\n", LUNG_CAPACITY, "Longinhoud punt toevoegen aan grafiek.");
     }
 }

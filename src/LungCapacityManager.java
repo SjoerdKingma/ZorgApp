@@ -1,3 +1,5 @@
+import Helpers.ConversionHelper;
+
 public class LungCapacityManager {
 
     private static final int MAX_STARS = 10;

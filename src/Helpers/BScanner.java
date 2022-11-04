@@ -1,3 +1,5 @@
+package Helpers;
+
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -6,7 +8,7 @@ import java.util.Scanner;
 
 import static java.time.format.ResolverStyle.STRICT;
 
-// BScanner is a scanner class, wrapping the java.util.Scanner, providing a bit more
+// Helpers.BScanner is a scanner class, wrapping the java.util.Scanner, providing a bit more
 // robustness in cases where the given input does not match the required one.
 class BScanner
 {

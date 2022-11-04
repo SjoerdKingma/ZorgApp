@@ -1,3 +1,5 @@
+import Helpers.ConversionHelper;
+
 import java.util.Scanner;
 
 public class Tandarts extends User{

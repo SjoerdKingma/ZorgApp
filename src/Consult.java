@@ -1,5 +1,4 @@
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public abstract class Consult {
     private DepartmentName consultVariant;
@@ -13,6 +12,6 @@ public abstract class Consult {
         this.consultType = consultType;
     }
     public void viewData(){
-        System.out.format("%-16s - %-8s (%s)\n", this.date.format(ZorgApp.dateTimeFormatter), this.consultType.getName().toUpperCase(), this.consultVariant.toString());
+        System.out.format("%-16s - %-8s (%s)\n", this.date.format(ZorgApp.DATE_TIME_FORMATTER), this.consultType.getName().toUpperCase(), this.consultVariant.toString());
     }
 }

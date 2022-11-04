@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public final class ScannerHelper {
 
-    private static final String ErrorNoInteger = "Please enter a valid number";
+    private static final String ERROR_NO_INTEGER = "Please enter a valid number";
 
     private ScannerHelper(){
 

@@ -2,7 +2,6 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 
 public class Patient
 {
@@ -79,7 +78,7 @@ public class Patient
       this.weight = weight;
       this.length = length;
       this.prescriptions = prescriptions;
-      this.dateTimeFormatter = ZorgApp.dateFormatter;
+      this.dateTimeFormatter = ZorgApp.DATE_FORMATTER;
       this.lungCapacityManager = new LungCapacityManager(lungCapacityInfo);
       this.consults = consults;
    }

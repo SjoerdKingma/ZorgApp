@@ -60,7 +60,7 @@ public class Fysio extends User{
                 System.out.format("Voornaam veranderd naar: %s", input);
                 break;
             case DATE_OF_BIRTH:
-                System.out.println("Voer de nieuwe waarde in voor geboortedatum. Gebruik dit formaat: yyyy-mm-dd:");
+                System.out.println("Voer de nieuwe waarde in voor geboortedatum. Gebruik dit formaat: yyyy-mm-dd:"); //TODO: Vertalen naar het Nederlands
                 input = scanner.nextLine();
                 patient.setDateOfBirth(ConversionHelper.stringToLocalDate(input));
                 System.out.format("Geboortedatum veranderd naar: %s", input);
